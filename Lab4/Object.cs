@@ -8,9 +8,22 @@ namespace Lab4
 {
     public abstract class Object
     {
-        public char Symbol { get; private set; }
+        protected char Symbol;
+        protected bool Solid;
 
+        public Object()
+        {
+            Symbol = '-';
+        }
 
+        public char GetSymbol()
+        {
+            return Symbol;
+        }
 
+        public bool IsSolid()
+        {
+            return Solid;
+        }
     }
 }
