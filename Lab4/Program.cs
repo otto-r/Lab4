@@ -10,9 +10,8 @@ namespace Lab4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("new edit");
             Wall w1 = new Wall();
-            w1.Symbol
+            Console.WriteLine(w1.GetSymbol());
         }
     }
 }

@@ -8,6 +8,10 @@ namespace Lab4
 {
     public class Wall : Object
     {
-
+        public Wall()
+        {
+            Symbol = '#';
+            Solid = true;
+        }
     }
 }
