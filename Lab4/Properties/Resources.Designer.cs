@@ -61,15 +61,6 @@ namespace Lab4.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string Map {
-            get {
-                return ResourceManager.GetString("Map", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ###########----#######
         ///#---------######-----#
         ///#--------------#-----#
@@ -77,9 +68,9 @@ namespace Lab4.Properties {
         ///#---------############
         ///###########-----------.
         /// </summary>
-        internal static string Map1 {
+        internal static string Map {
             get {
-                return ResourceManager.GetString("Map1", resourceCulture);
+                return ResourceManager.GetString("Map", resourceCulture);
             }
         }
     }
