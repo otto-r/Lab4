@@ -20,31 +20,22 @@ namespace Lab4
                 { new Wall(), new Floor(), new Floor(), new Floor(), new Wall() },
                 { new Wall(), new Wall(), new Wall(), new Wall(), new Wall() }};
             
-
             map[2, 2] = player;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
-                    map[i, j].PrintSymbol();
-                }
-                Console.WriteLine();
-            }
 
             char input;
             while (true)
             {
-                input = Console.ReadKey(true).KeyChar;
-                map = player.MovePlayer(input, map, temp, player);
-                Console.Clear();
                 for (int i = 0; i < 5; i++)
                 {
                     for (int j = 0; j < 5; j++)
                     {
-                        Console.Write(map[i, j].GetSymbol());
+                        map[i, j].PrintSymbol();
                     }
                     Console.WriteLine();
                 }
+                input = Console.ReadKey(true).KeyChar;
+                map = player.MovePlayer(input, map, temp, player);
+                Console.Clear();
             }
         }
     }
