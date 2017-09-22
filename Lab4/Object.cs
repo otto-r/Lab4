@@ -33,7 +33,7 @@ namespace Lab4
         {
             return Solid;
         }
-        public virtual void PrintSymbol()
+        public virtual void PrintSymbol(bool isHurt)
         {
             Console.Write('-');
         }

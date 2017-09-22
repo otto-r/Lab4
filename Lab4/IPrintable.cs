@@ -8,6 +8,6 @@ namespace Lab4
 {
     interface IPrintable
     {
-        void PrintSymbol();
+        void PrintSymbol(bool isHurt);
     }
 }

@@ -57,16 +57,7 @@ namespace Lab4
                 {
                     for (int j = 0; j < 22; j++)
                     {
-                        if (map[i, j].GetSymbol() == '@' && player.IsHurt())
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            map[i, j].PrintSymbol();
-                            Console.ForegroundColor = ConsoleColor.White;
-                        }
-                        else
-                        {
-                            map[i, j].PrintSymbol();
-                        }
+                         map[i, j].PrintSymbol(player.IsHurt());
                     }
                     Console.WriteLine();
                 }

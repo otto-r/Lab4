@@ -22,7 +22,7 @@ namespace Lab4
             Danger = true;
         }
 
-        public override void PrintSymbol()
+        public override void PrintSymbol(bool isHurt)
         {
             Console.Write(Symbol);
         }

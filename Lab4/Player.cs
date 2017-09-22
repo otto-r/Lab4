@@ -21,9 +21,18 @@ namespace Lab4
             Solid = true;
         }
 
-        public override void PrintSymbol()
+        public override void PrintSymbol(bool isHurt)
         {
-            Console.Write(Symbol);
+            if (isHurt)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(Symbol);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.Write(Symbol);
+            }
         }
 
         public int GetXPosition()
