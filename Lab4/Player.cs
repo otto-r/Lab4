@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    class Player : Object , IPrintable
+    class Player : Object, IPrintable
     {
         private int XPosition;
         private int YPosition;
+        private bool Hurt;
         Object temp = new Floor();
 
         public Player()
@@ -24,7 +25,7 @@ namespace Lab4
         {
             Console.Write(Symbol);
         }
-            
+
         public int GetXPosition()
         {
             return XPosition;
@@ -45,6 +46,16 @@ namespace Lab4
             YPosition = y;
         }
 
+        public bool IsHurt()
+        {
+            return Hurt;
+        }
+
+        public void ClearHurt()
+        {
+            Hurt = false;
+        }
+
         public Object[,] MovePlayer(char input, Object[,] map, Player player)
         {
             if (input == 'w')
@@ -56,6 +67,11 @@ namespace Lab4
                     map[GetXPosition() - 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() - 1);
                 }
+                if (map[GetXPosition() - 1, GetYPosition()].GetDanger())
+                {
+                    Player.Score += 4;
+                    Hurt = true;
+                }
             }
             if (input == 's')
             {
@@ -65,6 +81,11 @@ namespace Lab4
                     temp = map[GetXPosition() + 1, GetYPosition()];
                     map[GetXPosition() + 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() + 1);
+                }
+                if (map[GetXPosition() + 1, GetYPosition()].GetDanger())
+                {
+                    Player.Score += 4;
+                    Hurt = true;
                 }
             }
             if (input == 'a')
@@ -76,6 +97,11 @@ namespace Lab4
                     map[GetXPosition(), GetYPosition() - 1] = player;
                     SetYPosition(GetYPosition() - 1);
                 }
+                if (map[GetXPosition(), GetYPosition() - 1].GetDanger())
+                {
+                    Player.Score += 4;
+                    Hurt = true;
+                }
             }
             if (input == 'd')
             {
@@ -85,6 +111,11 @@ namespace Lab4
                     temp = map[GetXPosition(), GetYPosition() + 1];
                     map[GetXPosition(), GetYPosition() + 1] = player;
                     SetYPosition(GetYPosition() + 1);
+                }
+                if (map[GetXPosition(), GetYPosition() + 1].GetDanger())
+                {
+                    Player.Score += 4;
+                    Hurt = true;
                 }
             }
             return map;
