@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    class Player : Object , IPrintable
+    class Monster : Object , IPrintable
     {
         private int XPosition;
         private int YPosition;
         Object temp = new Floor();
+        Random r = new Random();
 
-        public Player()
+        public Monster()
         {
-            XPosition = 2;
-            YPosition = 2;
-            Symbol = (char)Objects.Player;
+            XPosition = 3;
+            YPosition = 1;
+            Symbol = (char)Objects.Monster;
             Solid = true;
         }
 
@@ -24,7 +25,7 @@ namespace Lab4
         {
             Console.Write(Symbol);
         }
-            
+
         public int GetXPosition()
         {
             return XPosition;
@@ -45,45 +46,46 @@ namespace Lab4
             YPosition = y;
         }
 
-        public Object[,] MovePlayer(char input, Object[,] map, Player player)
+        public Object[,] MoveMonster(Object[,] map, Monster monster)
         {
-            if (input == 'w')
+            int direction = r.Next(0, 4);
+            if (direction == 0)
             {
                 if (!map[GetXPosition() - 1, GetYPosition()].IsSolid())
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() - 1, GetYPosition()];
-                    map[GetXPosition() - 1, GetYPosition()] = player;
+                    map[GetXPosition() - 1, GetYPosition()] = monster;
                     SetXPosition(GetXPosition() - 1);
                 }
             }
-            if (input == 's')
+            if (direction == 1)
             {
                 if (!map[GetXPosition() + 1, GetYPosition()].IsSolid())
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() + 1, GetYPosition()];
-                    map[GetXPosition() + 1, GetYPosition()] = player;
+                    map[GetXPosition() + 1, GetYPosition()] = monster;
                     SetXPosition(GetXPosition() + 1);
                 }
             }
-            if (input == 'a')
+            if (direction == 2)
             {
                 if (!map[GetXPosition(), GetYPosition() - 1].IsSolid())
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() - 1];
-                    map[GetXPosition(), GetYPosition() - 1] = player;
+                    map[GetXPosition(), GetYPosition() - 1] = monster;
                     SetYPosition(GetYPosition() - 1);
                 }
             }
-            if (input == 'd')
+            if (direction == 3)
             {
                 if (!map[GetXPosition(), GetYPosition() + 1].IsSolid())
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() + 1];
-                    map[GetXPosition(), GetYPosition() + 1] = player;
+                    map[GetXPosition(), GetYPosition() + 1] = monster;
                     SetYPosition(GetYPosition() + 1);
                 }
             }
