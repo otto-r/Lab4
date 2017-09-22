@@ -57,13 +57,30 @@ namespace Lab4
                 {
                     for (int j = 0; j < 22; j++)
                     {
-                        map[i, j].PrintSymbol();
+                        if (map[i, j].GetSymbol() == '@' && player.IsHurt())
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            map[i, j].PrintSymbol();
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        else
+                        {
+                            map[i, j].PrintSymbol();
+                        }
                     }
                     Console.WriteLine();
                 }
+                Console.WriteLine();
+                Console.WriteLine($"Moves: {Player.Score}");
+                if (player.IsHurt())
+                {
+                    Console.WriteLine("The monster hurt you! You lost 5 moves.");
+                }
+                player.ClearHurt();
                 input = Console.ReadKey(true).KeyChar;
                 map = player.MovePlayer(input, map, player);
                 map = monster1.MoveMonster(map, monster1);
+                Player.Score++;
                 Console.Clear();
             }
         }

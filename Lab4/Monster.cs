@@ -19,6 +19,7 @@ namespace Lab4
             YPosition = 1;
             Symbol = (char)Objects.Monster;
             Solid = true;
+            Danger = true;
         }
 
         public override void PrintSymbol()
