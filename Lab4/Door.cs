@@ -13,7 +13,7 @@ namespace Lab4
             Symbol = (char)Objects.Door;
             Solid = false;
         }
-        public override void PrintSymbol()
+        public override void PrintSymbol(bool isHurt)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write(Symbol);
