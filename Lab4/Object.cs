@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    public abstract class Object
+    public abstract class Object : IPrintable
     {
         protected char Symbol;
         protected bool Solid;

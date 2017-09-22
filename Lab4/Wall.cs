@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    public class Wall : Object
+    public class Wall : Object , IPrintable
     {
         public Wall()
         {

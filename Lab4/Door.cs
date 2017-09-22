@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    public class Door : Object
+    public class Door : Object , IPrintable
     {
         public Door()
         {

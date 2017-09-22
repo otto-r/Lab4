@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    class Player : Object
+    class Player : Object , IPrintable
     {
         private int XPosition;
         private int YPosition;
