@@ -17,6 +17,12 @@ namespace Lab4
             Symbol = '@';
         }
 
+
+        public override void PrintSymbol()
+        {
+            Console.Write('@');
+        }
+            
         public int GetXPosition()
         {
             return XPosition;

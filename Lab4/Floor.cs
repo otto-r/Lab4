@@ -13,5 +13,11 @@ namespace Lab4
             Symbol = '-';
             Solid = false;
         }
+        public override void PrintSymbol()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write('-');
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

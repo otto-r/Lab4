@@ -25,5 +25,10 @@ namespace Lab4
         {
             return Solid;
         }
+        public virtual void PrintSymbol()
+        {
+            Console.Write('-');
+        }
+
     }
 }

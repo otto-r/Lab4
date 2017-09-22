@@ -10,19 +10,23 @@ namespace Lab4
     {
         static void Main(string[] args)
         {
+
             Player player = new Player();
             Object temp = new Floor();
+          
             Object[,] map = new Object[,] { { new Wall(), new Wall(), new Wall(), new Wall(), new Wall() },
                 { new Wall(), new Floor(), new Floor(), new Floor(), new Wall() },
-                { new Wall(), new Floor(), new Player(), new Floor(), new Wall() },
+                { new Wall(), new Floor(), new Floor(), new Floor(), new Wall() },
                 { new Wall(), new Floor(), new Floor(), new Floor(), new Wall() },
                 { new Wall(), new Wall(), new Wall(), new Wall(), new Wall() }};
             
-            for(int i = 0; i < 5; i++)
+
+            map[2, 2] = player1;
+            for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    Console.Write(map[i, j].GetSymbol());
+                    map[i, j].PrintSymbol();
                 }
                 Console.WriteLine();
             }
