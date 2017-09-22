@@ -45,6 +45,7 @@
     <Compile Include="Door.cs" />
     <Compile Include="Floor.cs" />
     <Compile Include="IPrintable.cs" />
+    <Compile Include="Monster.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
