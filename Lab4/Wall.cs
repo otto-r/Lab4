@@ -13,5 +13,11 @@ namespace Lab4
             Symbol = '#';
             Solid = true;
         }
+        public override void PrintSymbol()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write('#');
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

@@ -12,5 +12,10 @@ namespace Lab4
         {
             Symbol = '@';
         }
+
+        public override void PrintSymbol()
+        {
+            Console.Write('@');
+        }
     }
 }

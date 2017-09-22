@@ -13,5 +13,11 @@ namespace Lab4
             Symbol = 'D';
             Solid = false;
         }
+        public override void PrintSymbol()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write('D');
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
