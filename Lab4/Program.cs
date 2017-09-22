@@ -10,10 +10,20 @@ namespace Lab4
     {
         static void Main(string[] args)
         {
-            Wall w1 = new Wall();
-            Door d1 = new Door();
-            Console.WriteLine(w1.GetSymbol());
-            Console.WriteLine("door"+d1.GetSymbol());
+            Object[,] map = new Object[,] { { new Wall(), new Wall(), new Wall(), new Wall(), new Wall() },
+                { new Wall(), new Floor(), new Floor(), new Floor(), new Wall() },
+                { new Wall(), new Floor(), new Player(), new Floor(), new Wall() },
+                { new Wall(), new Floor(), new Floor(), new Floor(), new Wall() },
+                { new Wall(), new Wall(), new Wall(), new Wall(), new Wall() }};
+            
+            for(int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.Write(map[i, j].GetSymbol());
+                }
+                Console.WriteLine();
+            }
         }
     }
 }

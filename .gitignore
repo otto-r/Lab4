@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/Lab4/v15/.suo
+/.vs/Lab4/v15/sqlite3/storage.ide
+/Lab4/bin/Debug
+/Lab4/obj/Debug
+/Lab4/obj/Release
