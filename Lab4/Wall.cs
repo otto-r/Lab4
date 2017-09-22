@@ -10,13 +10,13 @@ namespace Lab4
     {
         public Wall()
         {
-            Symbol = '#';
+            Symbol = (char)Objects.Wall;
             Solid = true;
         }
         public override void PrintSymbol()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write('#');
+            Console.Write(Symbol);
             Console.ForegroundColor = ConsoleColor.White;
         }
     }

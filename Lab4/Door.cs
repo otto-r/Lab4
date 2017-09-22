@@ -10,13 +10,13 @@ namespace Lab4
     {
         public Door()
         {
-            Symbol = 'D';
+            Symbol = (char)Objects.Door;
             Solid = false;
         }
         public override void PrintSymbol()
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write('D');
+            Console.Write(Symbol);
             Console.ForegroundColor = ConsoleColor.White;
         }
     }
