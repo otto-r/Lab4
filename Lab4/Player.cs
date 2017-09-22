@@ -14,13 +14,13 @@ namespace Lab4
         {
             XPosition = 2;
             YPosition = 2;
-            Symbol = '@';
+            Symbol = (char)Objects.Player;
         }
 
 
         public override void PrintSymbol()
         {
-            Console.Write('@');
+            Console.Write(Symbol);
         }
             
         public int GetXPosition()

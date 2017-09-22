@@ -10,13 +10,13 @@ namespace Lab4
     {
         public Floor()
         {
-            Symbol = '-';
+            Symbol = (char)Objects.Floor;
             Solid = false;
         }
         public override void PrintSymbol()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write('-');
+            Console.Write(Symbol);
             Console.ForegroundColor = ConsoleColor.White;
         }
     }

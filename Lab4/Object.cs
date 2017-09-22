@@ -8,12 +8,13 @@ namespace Lab4
 {
     public abstract class Object : IPrintable
     {
+        protected enum Objects { Wall = '#', Floor = '-', Player = '@', Door = 'D' };
         protected char Symbol;
         protected bool Solid;
 
         public Object()
         {
-            Symbol = '-';
+            Symbol = (char)Objects.Floor;
         }
 
         public char GetSymbol()
