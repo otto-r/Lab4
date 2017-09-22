@@ -15,14 +15,14 @@ namespace Lab4
             Player player = new Player();
             Monster monster1 = new Monster();
           
-            Object[,] map = new Object[6,22];
-            StreamReader MapReader = new StreamReader("Map.txt");
+            Object[,] map = new Object[11,22];
+            //StreamReader MapReader = new StreamReader(Properties.Resources.Map);
 
-            String MapString = MapReader.ReadToEnd();
+            String MapString = Properties.Resources.Map;
             String MapString2 = MapString.Replace(Environment.NewLine, "");
 
             int counter = 0;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 11; i++)
             {
                 for (int j = 0; j < 22; j++)
                 {
@@ -53,7 +53,7 @@ namespace Lab4
             char input;
             while (true)
             {
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 11; i++)
                 {
                     for (int j = 0; j < 22; j++)
                     {
@@ -63,6 +63,7 @@ namespace Lab4
                 }
                 Console.WriteLine();
                 Console.WriteLine($"Moves: {Player.Score}");
+                Console.WriteLine("Number of chars in string: " + (MapString.Length - MapString2.Length));
                 if (player.IsHurt())
                 {
                     Console.WriteLine("The monster hurt you! You lost 5 moves.");
