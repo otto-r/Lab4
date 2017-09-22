@@ -21,7 +21,7 @@ namespace Lab4
                 { new Wall(), new Wall(), new Wall(), new Wall(), new Wall() }};
             
 
-            map[2, 2] = player1;
+            map[2, 2] = player;
             for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 5; j++)
