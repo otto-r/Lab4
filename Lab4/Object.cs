@@ -11,6 +11,8 @@ namespace Lab4
         protected enum Objects { Wall = '#', Floor = '-', Player = '@', Door = 'D', Monster = 'M' };
         protected char Symbol;
         protected bool Solid;
+        protected bool Danger;
+        public static int Score;
 
         public Object()
         {
@@ -20,6 +22,11 @@ namespace Lab4
         public char GetSymbol()
         {
             return Symbol;
+        }
+
+        public bool GetDanger()
+        {
+            return Danger;
         }
 
         public bool IsSolid()
