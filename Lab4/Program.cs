@@ -12,7 +12,7 @@ namespace Lab4
         {
 
             Player player = new Player();
-            Object temp = new Floor();
+            Monster monster1 = new Monster();
           
             Object[,] map = new Object[,] { { new Wall(), new Wall(), new Wall(), new Wall(), new Wall() },
                 { new Wall(), new Floor(), new Floor(), new Floor(), new Wall() },
@@ -21,6 +21,7 @@ namespace Lab4
                 { new Wall(), new Wall(), new Wall(), new Wall(), new Wall() }};
             
             map[2, 2] = player;
+            map[3, 1] = monster1;
 
             char input;
             while (true)
@@ -34,7 +35,8 @@ namespace Lab4
                     Console.WriteLine();
                 }
                 input = Console.ReadKey(true).KeyChar;
-                map = player.MovePlayer(input, map, temp, player);
+                map = player.MovePlayer(input, map, player);
+                map = monster1.MoveMonster(map, monster1);
                 Console.Clear();
             }
         }
