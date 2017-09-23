@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    class Floor : Object , IPrintable
+    class Key : Object , IPrintable
     {
-        public Floor()
+        public Key()
         {
-            Symbol = (char)Objects.Floor;
+            Symbol = (char)Objects.Key;
             Solid = false;
         }
         public override void PrintSymbol(bool isHurt)
         {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(Symbol);
             Console.ForegroundColor = ConsoleColor.White;
         }

@@ -11,67 +11,55 @@ namespace Lab4
     {
         static void Main(string[] args)
         {
-
             Player player = new Player();
-            Monster monster1 = new Monster();
-          
-            Object[,] map = new Object[11,22];
-            //StreamReader MapReader = new StreamReader(Properties.Resources.Map);
+            //Monster monster1 = new Monster();
+            //Monster monster2 = new Monster();
 
-            String MapString = Properties.Resources.Map;
-            String MapString2 = MapString.Replace(Environment.NewLine, "");
-
-            int counter = 0;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int j = 0; j < 22; j++)
-                {
-                    if (MapString2[counter] == '#')
-                    {
-                        map[i, j] = new Wall();
-                    }
-                    else if (MapString2[counter] == 'D')
-                    {
-                        map[i, j] = new Door();
-                    }
-                    else if (MapString2[counter] == '-')
-
-                    {
-                        map[i, j] = new Floor();
-                    }
-                    //else if (MapString2[counter] == '')
-                    //{
-                    //    map[i, j] = new Floor();
-                    //}
-                    counter++;
-                }
-            }
+            Object[,] map  = Map.GenerateMap();
 
             map[2, 2] = player;
-            map[3, 1] = monster1;
+            //map[3, 1] = monster1;
+            //map[9, 33] = monster2;
 
             char input;
             while (true)
             {
-                for (int i = 0; i < 11; i++)
+                for (int i = 0; i < Map.GetRows(); i++)
                 {
-                    for (int j = 0; j < 22; j++)
+                    for (int j = 0; j < Map.GetColumns(); j++)
                     {
-                         map[i, j].PrintSymbol(player.IsHurt());
+                        map[i, j].PrintSymbol(player.IsHurt());
                     }
-                    Console.WriteLine();
+                    if (i == Map.GetRows() / 2 - 1)
+                    {
+                        Console.WriteLine("     We could have some stats/info here maybe?");
+                    }
+                    else if (i == Map.GetRows() / 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write("     k");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Key, needed to open some doors.");
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                    }
                 }
-                Console.WriteLine();
                 Console.WriteLine($"Moves: {Player.Score}");
-                Console.WriteLine("Number of chars in string: " + (MapString.Length - MapString2.Length));
+
                 if (player.IsHurt())
                 {
                     Console.WriteLine("The monster hurt you! You lost 5 moves.");
                 }
                 player.ClearHurt();
+                // borde lägga till så att enbart WASD skickas in i metod, så att de inte räknas i "score". kan lägga meny etc på fler knappar
                 input = Console.ReadKey(true).KeyChar;
+                
                 map = player.MovePlayer(input, map, player);
-                map = monster1.MoveMonster(map, monster1);
+                //map = monster1.MoveMonster(map, monster1);
+                //map = monster2.MoveMonster(map, monster2);
+
                 Player.Score++;
                 Console.Clear();
             }

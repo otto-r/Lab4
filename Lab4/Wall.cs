@@ -15,7 +15,7 @@ namespace Lab4
         }
         public override void PrintSymbol(bool isHurt)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write(Symbol);
             Console.ForegroundColor = ConsoleColor.White;
         }
