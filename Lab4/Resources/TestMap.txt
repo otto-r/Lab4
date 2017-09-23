@@ -1,0 +1,10 @@
+#####################xxxxxxxxxxxxxxx
+#----------------D---#xxxxxxxxxxxxxx
+#----------------#----#xxxxxxxxxxxxx
+#-------xxx------xx#----#xxxxxxxxxxx
+#-------xxx------xxx###--####xxxxxxx
+#-------xxx------xxxxxx#-----#xxxxxx
+#-------xxx------xxxxxxx#####xxxxxxx
+#----------------xxxxxxxxxxxxxxxxxxx
+#----------------xxxxxxxxxxxxxxxxxxx
+x#x#x#x#x#x#x#x#xxxxxxxxxxxxxxxxxxxx
