@@ -15,6 +15,7 @@ namespace Lab4
 
         public Monster()
         {
+            // Fixa kod så att om man har fler monster de inte börjar på samma plats
             XPosition = 3;
             YPosition = 1;
             Symbol = (char)Objects.Monster;
