@@ -61,16 +61,41 @@ namespace Lab4.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ###########----#######
-        ///#---------######-----#
-        ///#--------------#-----#
-        ///#--------------D-----#
-        ///#---------############
-        ///###########-----------.
+        ///   Looks up a localized string similar to ###########xxxx################xxxxxxx
+        ///#---------######---------------#xxxxxx
+        ///#--------------#-----##########xxxxxxx
+        ///#--------------D-----#xxxxxxxxxxxxxxxx
+        ///#---------#######D#####xxxxxxxxxxxxxxx
+        ///#####D#####xx---------#xxxxxxxxxxxxxxx
+        ///#---------#xx---------#xxxxxxxxxxxxxxx
+        ///#---------#-----#-----#xxxxxxxx###xxxx
+        ///#---------#----#-#----#xxxxxxx#--k#xxx
+        ///#---------#-----#-----#xxxxxxx#---#xxx
+        ///#####D#####-----------#xxxxxxxx###xxxx
+        ///#---------#-----------#xxxxxxxxxxxxxxx
+        ///#---------#-----------#xxxxxxxxx [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Map {
             get {
                 return ResourceManager.GetString("Map", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xx###xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        ///x#---#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        ///x#----#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        ///xx#----#xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        ///xxx###--####xxxxxxxxxxxxxxxxxxxxxxxxx
+        ///xxxxxx#-----#xxxxxxxxxxxxxxxxxxxxxxxx
+        ///xxxxxxx#####xxxxxxxxxxxxxxxxxxxxxxxxx
+        ///xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        ///xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        ///xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+        /// </summary>
+        internal static string TestMap {
+            get {
+                return ResourceManager.GetString("TestMap", resourceCulture);
             }
         }
     }
