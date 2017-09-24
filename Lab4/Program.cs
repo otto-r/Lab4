@@ -28,7 +28,7 @@ namespace Lab4
                 {
                     for (int j = 0; j < Map.GetColumns(); j++)
                     {
-                        map[i, j].PrintSymbol(player.IsHurt());
+                        map[i, j].PrintSymbol(player.GetHurt());
                     }
                     if (i == Map.GetRows() / 2 - 1)
                     {
@@ -46,13 +46,31 @@ namespace Lab4
                         Console.WriteLine();
                     }
                 }
-                Console.WriteLine($"Moves: {Player.Score}");
 
-                if (player.IsHurt())
+                Console.WriteLine($"Keys: {player.GetKeys()} Moves: {Player.Score}");
+
+                if (player.GetHurt())
                 {
                     Console.WriteLine("The monster hurt you! You lost 5 moves.");
                 }
-                player.ClearHurt();
+                
+                if (player.GetNeedKey())
+                {
+                    Console.WriteLine("You need a key to open this door!");
+                }
+
+                if (player.GetUsedKey())
+                {
+                    Console.WriteLine("You used a key to open the door!");
+                }
+
+                if (player.GetGotKey())
+                {
+                    Console.WriteLine("You picked up a key!");
+                }
+
+                player.ClearConditions();
+
                 // borde lägga till så att enbart WASD skickas in i metod, så att de inte räknas i "score". kan lägga meny etc på fler knappar
                 input = Console.ReadKey(true).KeyChar;
                 

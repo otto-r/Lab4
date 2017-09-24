@@ -11,7 +11,7 @@ namespace Lab4
         public Door()
         {
             Symbol = (char)Objects.Door;
-            Solid = false;
+            Solid = true;
         }
         public override void PrintSymbol(bool isHurt)
         {
