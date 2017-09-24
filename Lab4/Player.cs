@@ -11,6 +11,10 @@ namespace Lab4
         private int XPosition;
         private int YPosition;
         private bool Hurt;
+        private bool NeedKey;
+        private bool UsedKey;
+        private bool GotKey;
+        private int Keys;
         Object temp = new Floor();
 
         public Player()
@@ -55,76 +59,175 @@ namespace Lab4
             YPosition = y;
         }
 
-        public bool IsHurt()
+        public void ClearConditions()
+        {
+            Hurt = false;
+            NeedKey = false;
+            UsedKey = false;
+            GotKey = false;
+        }
+
+        public int GetKeys()
+        {
+            return Keys;
+        }
+
+        public bool GetHurt()
         {
             return Hurt;
         }
 
-        public void ClearHurt()
+        public bool GetNeedKey()
         {
-            Hurt = false;
+            return NeedKey;
+        }
+
+        public bool GetUsedKey()
+        {
+            return UsedKey;
+        }
+
+        public bool GetGotKey()
+        {
+            return GotKey;
         }
 
         public Object[,] MovePlayer(char input, Object[,] map, Player player)
         {
-            if (input == 'w')
+            if (input == 'w') //Go north
             {
-                if (!map[GetXPosition() - 1, GetYPosition()].IsSolid())
+                if (!map[GetXPosition() - 1, GetYPosition()].IsSolid()) //Checks if object is solid
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() - 1, GetYPosition()];
+                    if (temp.GetSymbol() == 'k') //Checks if object is key
+                    {
+                        GotKey = true;
+                        temp = new Floor();
+                        Keys++;
+                    }
                     map[GetXPosition() - 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() - 1);
                 }
-                if (map[GetXPosition() - 1, GetYPosition()].GetDanger())
+                if (map[GetXPosition() - 1, GetYPosition()].GetDanger()) //Checks if object is dangerous
                 {
                     Player.Score += 4;
                     Hurt = true;
                 }
+                if (map[GetXPosition() - 1, GetYPosition()].IsSolid() && map[GetXPosition() - 1, GetYPosition()].GetSymbol() == 'D') //Checks for locked door
+                {
+                    if (Keys > 0) //Unlock door
+                    {
+                        UsedKey = true;
+                        Keys--;
+                        map[GetXPosition() - 1, GetYPosition()].SetSolid(false);
+                    }
+                    else //Player needs a key
+                    {
+                        NeedKey = true;
+                    }
+                }
             }
-            if (input == 's')
+            if (input == 's') //Go south
             {
-                if (!map[GetXPosition() + 1, GetYPosition()].IsSolid())
+                if (!map[GetXPosition() + 1, GetYPosition()].IsSolid()) //Checks if object is solid
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() + 1, GetYPosition()];
+                    if (temp.GetSymbol() == 'k') //Checks if object is key
+                    {
+                        GotKey = true;
+                        temp = new Floor();
+                        Keys++;
+                    }
                     map[GetXPosition() + 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() + 1);
                 }
-                if (map[GetXPosition() + 1, GetYPosition()].GetDanger())
+                if (map[GetXPosition() + 1, GetYPosition()].GetDanger()) //Checks if object is dangerous
                 {
                     Player.Score += 4;
                     Hurt = true;
                 }
+                if (map[GetXPosition() + 1, GetYPosition()].IsSolid() && map[GetXPosition() + 1, GetYPosition()].GetSymbol() == 'D') //Checks for locked door
+                {
+                    if (Keys > 0) //Unlock door
+                    {
+                        UsedKey = true;
+                        Keys--;
+                        map[GetXPosition() + 1, GetYPosition()].SetSolid(false);
+                    }
+                    else //Player needs a key
+                    {
+                        NeedKey = true;
+                    }
+                }
             }
-            if (input == 'a')
+            if (input == 'a') //Go west
             {
-                if (!map[GetXPosition(), GetYPosition() - 1].IsSolid())
+                if (!map[GetXPosition(), GetYPosition() - 1].IsSolid()) //Checks if object is solid
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() - 1];
+                    if (temp.GetSymbol() == 'k') //Checks if object is key
+                    {
+                        GotKey = true;
+                        temp = new Floor();
+                        Keys++;
+                    }
                     map[GetXPosition(), GetYPosition() - 1] = player;
                     SetYPosition(GetYPosition() - 1);
                 }
-                if (map[GetXPosition(), GetYPosition() - 1].GetDanger())
+                if (map[GetXPosition(), GetYPosition() - 1].GetDanger()) //Checks if object is dangerous
                 {
                     Player.Score += 4;
                     Hurt = true;
                 }
+                if (map[GetXPosition(), GetYPosition() - 1].IsSolid() && map[GetXPosition(), GetYPosition() - 1].GetSymbol() == 'D') //Checks for locked door
+                {
+                    if (Keys > 0) //Unlock door
+                    {
+                        UsedKey = true;
+                        Keys--;
+                        map[GetXPosition(), GetYPosition() - 1].SetSolid(false);
+                    }
+                    else //Player needs a key
+                    {
+                        NeedKey = true;
+                    }
+                }
             }
-            if (input == 'd')
+            if (input == 'd') //Go east
             {
-                if (!map[GetXPosition(), GetYPosition() + 1].IsSolid())
+                if (!map[GetXPosition(), GetYPosition() + 1].IsSolid()) //Checks if object is solid
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() + 1];
+                    if (temp.GetSymbol() == 'k') //Checks if object is key
+                    {
+                        GotKey = true;
+                        temp = new Floor();
+                        Keys++;
+                    }
                     map[GetXPosition(), GetYPosition() + 1] = player;
                     SetYPosition(GetYPosition() + 1);
                 }
-                if (map[GetXPosition(), GetYPosition() + 1].GetDanger())
+                if (map[GetXPosition(), GetYPosition() + 1].GetDanger()) //Checks if object is dangerous
                 {
                     Player.Score += 4;
                     Hurt = true;
+                }
+                if (map[GetXPosition(), GetYPosition() + 1].IsSolid() && map[GetXPosition(), GetYPosition() + 1].GetSymbol() == 'D') //Checks for locked door
+                {
+                    if (Keys > 0) //Unlock door
+                    {
+                        UsedKey = true;
+                        Keys--;
+                        map[GetXPosition(), GetYPosition() + 1].SetSolid(false);
+                    }
+                    else //Player needs a key
+                    {
+                        NeedKey = true;
+                    }
                 }
             }
             return map;
