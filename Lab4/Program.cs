@@ -12,13 +12,13 @@ namespace Lab4
         static void Main(string[] args)
         {
             Player player = new Player();
-            //Monster monster1 = new Monster();
+            Monster monster1 = new Monster();
             //Monster monster2 = new Monster();
 
             Object[,] map  = Map.GenerateMap();
 
             map[2, 2] = player;
-            //map[3, 1] = monster1;
+            map[3, 1] = monster1;
             //map[9, 33] = monster2;
 
             char input;
@@ -75,7 +75,7 @@ namespace Lab4
                 input = Console.ReadKey(true).KeyChar;
                 
                 map = player.MovePlayer(input, map, player);
-                //map = monster1.MoveMonster(map, monster1);
+                map = monster1.MoveMonster(map, monster1);
                 //map = monster2.MoveMonster(map, monster2);
 
                 Player.Score++;
