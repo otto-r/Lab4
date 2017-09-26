@@ -46,6 +46,18 @@ namespace Lab4
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Key, needed to open some doors.");
                     }
+                    else if (i == Map.GetRows() / 2 + 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"    Key: {player.GetKeys()}");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (i == Map.GetRows() / 2 + 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($"    SuperKey: {player.GetSuperKeys()}");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                     else
                     {
                         Console.WriteLine();
@@ -72,6 +84,11 @@ namespace Lab4
                 if (player.GetGotKey()) //The player got a key
                 {
                     Console.WriteLine("You picked up a key!");
+                }
+
+                if (player.GetGotSuperKey()) //The player got a key
+                {
+                    Console.WriteLine("You picked up a Superkey!");
                 }
 
                 player.ClearConditions(); //Clear special conditions

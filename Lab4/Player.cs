@@ -14,8 +14,10 @@ namespace Lab4
         private bool NeedKey;
         private bool UsedKey;
         private bool GotKey;
+        private bool GotSuperKey;
         private bool PlayerWin;
         private int Keys;
+        private int SuperKeys;
         Tile temp = new Floor(true);
 
         public Player()
@@ -67,11 +69,17 @@ namespace Lab4
             NeedKey = false;
             UsedKey = false;
             GotKey = false;
+            GotSuperKey = false;
         }
 
         public int GetKeys()
         {
             return Keys;
+        }
+
+        public int GetSuperKeys()
+        {
+            return SuperKeys;
         }
 
         public bool GetHurt()
@@ -92,6 +100,11 @@ namespace Lab4
         public bool GetGotKey()
         {
             return GotKey;
+        }
+
+        public bool GetGotSuperKey()
+        {
+            return GotSuperKey;
         }
 
         public bool GetPlayerWin()
@@ -116,6 +129,12 @@ namespace Lab4
                         Keys--;
                         map[GetXPosition() - 1, GetYPosition()].SetSolid(false);
                     }
+                    else if (SuperKeys > 0)
+                    {
+                        UsedKey = true;
+                        SuperKeys--;
+                        map[GetXPosition() - 1, GetYPosition()].SetSolid(false);
+                    }
                     else //Player needs a key
                     {
                         NeedKey = true;
@@ -130,6 +149,12 @@ namespace Lab4
                         GotKey = true;
                         temp = new Floor(true);
                         Keys++;
+                    }
+                    if (temp is SuperKey) //Checks if tile is superkey
+                    {
+                        GotSuperKey = true;
+                        temp = new Floor(true);
+                        SuperKeys+=3;
                     }
                     if (temp is Exit) //Checks if tile is exit
                     {
@@ -155,6 +180,12 @@ namespace Lab4
                         Keys--;
                         map[GetXPosition() + 1, GetYPosition()].SetSolid(false);
                     }
+                    else if (SuperKeys > 0)
+                    {
+                        UsedKey = true;
+                        SuperKeys--;
+                        map[GetXPosition() + 1, GetYPosition()].SetSolid(false);
+                    }
                     else //Player needs a key
                     {
                         NeedKey = true;
@@ -169,6 +200,12 @@ namespace Lab4
                         GotKey = true;
                         temp = new Floor(true);
                         Keys++;
+                    }
+                    if (temp is SuperKey) //Checks if tile is superkey
+                    {
+                        GotKey = true;
+                        temp = new Floor(true);
+                        SuperKeys += 3;
                     }
                     if (temp is Exit) //Checks if tile is Exit
                     {
@@ -194,6 +231,12 @@ namespace Lab4
                         Keys--;
                         map[GetXPosition(), GetYPosition() - 1].SetSolid(false);
                     }
+                    else if (SuperKeys > 0)
+                    {
+                        UsedKey = true;
+                        SuperKeys--;
+                        map[GetXPosition(), GetYPosition() - 1].SetSolid(false);
+                    }
                     else //Player needs a key
                     {
                         NeedKey = true;
@@ -208,6 +251,12 @@ namespace Lab4
                         GotKey = true;
                         temp = new Floor(true);
                         Keys++;
+                    }
+                    if (temp is SuperKey) //Checks if tile is superkey
+                    {
+                        GotKey = true;
+                        temp = new Floor(true);
+                        SuperKeys += 3;
                     }
                     if (temp is Exit) //Checks if object is exit
                     {
@@ -233,6 +282,12 @@ namespace Lab4
                         Keys--;
                         map[GetXPosition(), GetYPosition() + 1].SetSolid(false);
                     }
+                    else if (SuperKeys > 0)
+                    {
+                        UsedKey = true;
+                        SuperKeys--;
+                        map[GetXPosition(), GetYPosition() + 1].SetSolid(false);
+                    }
                     else //Player needs a key
                     {
                         NeedKey = true;
@@ -247,6 +302,12 @@ namespace Lab4
                         GotKey = true;
                         temp = new Floor(true);
                         Keys++;
+                    }
+                    if (temp is SuperKey) //Checks if tile is superkey
+                    {
+                        GotKey = true;
+                        temp = new Floor(true);
+                        SuperKeys += 3;
                     }
                     if (temp is Exit) //Checks if object is exit
                     {
@@ -265,7 +326,7 @@ namespace Lab4
             {
                 for (int j = player.YPosition - 2; j < player.YPosition + 3; j++)
                 {
-                    if (i >= 0 && i < map.GetUpperBound(0))
+                    if (i >= 0 && i < map.GetUpperBound(0) && j > 0)
                     {
                         if (!map[i, j].IsVisible())
                         {
