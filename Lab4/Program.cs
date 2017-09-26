@@ -90,8 +90,14 @@ namespace Lab4
                 map = monster2.MoveMonster(map, monster2, r.Next(0, 4)); //Move monster2
 
                 Player.Score++; //Add a move
+
+                if (player.GetPlayerWin()) //Player wins and ends game
+                {
+                    break;
+                }
                 Console.Clear();
             }
+            Win.YouWin();
         }
     }
 }

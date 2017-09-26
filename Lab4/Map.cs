@@ -65,6 +65,10 @@ namespace Lab4
                     {
                         map[i, j] = new Void();
                     }
+                    else if (MapString2[counter] == 'O')
+                    {
+                        map[i, j] = new Exit();
+                    }
                     counter++;
                 }
             }
