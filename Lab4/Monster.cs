@@ -26,7 +26,7 @@ namespace Lab4
         {
             if (Visible)
             {
-                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(Symbol);
                 Console.ForegroundColor = ConsoleColor.White;
             }

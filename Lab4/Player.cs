@@ -16,6 +16,7 @@ namespace Lab4
         private bool GotKey;
         private bool GotSuperKey;
         private bool PlayerWin;
+        private bool SteppedInMud;
         private int Keys;
         private int SuperKeys;
         Tile temp = new Floor(true);
@@ -70,6 +71,7 @@ namespace Lab4
             UsedKey = false;
             GotKey = false;
             GotSuperKey = false;
+            SteppedInMud = false;
         }
 
         public int GetKeys()
@@ -112,13 +114,17 @@ namespace Lab4
             return PlayerWin;
         }
 
+        public bool GetSteppedInMud()
+        {
+            return SteppedInMud;
+        }
+
         public Tile[,] MovePlayer(char input, Tile[,] map, Player player)
         {
             if (input == 'w') //Go north
             {
                 if (map[GetXPosition() - 1, GetYPosition()].GetDanger()) //Checks if tile is dangerous
                 {
-                    Player.Score += 4;
                     Hurt = true;
                 }
                 if (map[GetXPosition() - 1, GetYPosition()].IsSolid() && map[GetXPosition() - 1, GetYPosition()] is Door) //Checks for locked door
@@ -160,6 +166,10 @@ namespace Lab4
                     {
                         PlayerWin = true;
                     }
+                    if (temp is Mud) //Checks if tile is mud
+                    {
+                        SteppedInMud = true;
+                    }
                     map[GetXPosition() - 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() - 1);
                     map = ExpandVision(map, player); //Update visibility
@@ -169,7 +179,6 @@ namespace Lab4
             {
                 if (map[GetXPosition() + 1, GetYPosition()].GetDanger()) //Checks if tile is dangerous
                 {
-                    Player.Score += 4;
                     Hurt = true;
                 }
                 if (map[GetXPosition() + 1, GetYPosition()].IsSolid() && map[GetXPosition() + 1, GetYPosition()] is Door) //Checks for locked door
@@ -211,6 +220,10 @@ namespace Lab4
                     {
                         PlayerWin = true;
                     }
+                    if (temp is Mud) //Checks if tile is mud
+                    {
+                        SteppedInMud = true;
+                    }
                     map[GetXPosition() + 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() + 1);
                     map = ExpandVision(map, player); //Update visibility
@@ -220,7 +233,6 @@ namespace Lab4
             {
                 if (map[GetXPosition(), GetYPosition() - 1].GetDanger()) //Checks if tile is dangerous
                 {
-                    Player.Score += 4;
                     Hurt = true;
                 }
                 if (map[GetXPosition(), GetYPosition() - 1].IsSolid() && map[GetXPosition(), GetYPosition() - 1] is Door) //Checks for locked door
@@ -258,9 +270,13 @@ namespace Lab4
                         temp = new Floor(true);
                         SuperKeys += 3;
                     }
-                    if (temp is Exit) //Checks if object is exit
+                    if (temp is Exit) //Checks if tile is exit
                     {
                         PlayerWin = true;
+                    }
+                    if (temp is Mud) //Checks if tile is mud
+                    {
+                        SteppedInMud = true;
                     }
                     map[GetXPosition(), GetYPosition() - 1] = player;
                     SetYPosition(GetYPosition() - 1);
@@ -271,7 +287,6 @@ namespace Lab4
             {
                 if (map[GetXPosition(), GetYPosition() + 1].GetDanger()) //Checks if tile is dangerous
                 {
-                    Player.Score += 4;
                     Hurt = true;
                 }
                 if (map[GetXPosition(), GetYPosition() + 1].IsSolid() && map[GetXPosition(), GetYPosition() + 1] is Door) //Checks for locked door
@@ -312,6 +327,10 @@ namespace Lab4
                     if (temp is Exit) //Checks if object is exit
                     {
                         PlayerWin = true;
+                    }
+                    if (temp is Mud) //Checks if tile is mud
+                    {
+                        SteppedInMud = true;
                     }
                     map[GetXPosition(), GetYPosition() + 1] = player;
                     SetYPosition(GetYPosition() + 1);

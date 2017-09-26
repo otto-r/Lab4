@@ -27,6 +27,8 @@ namespace Lab4
 
             map = player.ExpandVision(map, player); //Initial visibility
 
+            Console.CursorVisible = false;
+
             while (true) //Main game loop
             {
                 for (int i = 0; i < Map.GetRows(); i++) //Print the map
@@ -37,26 +39,50 @@ namespace Lab4
                     }
                     if (i == Map.GetRows() / 2 - 1)
                     {
-                        Console.WriteLine("     We could have some stats/info here maybe?");
+                        Console.WriteLine("     Legend");
                     }
                     else if (i == Map.GetRows() / 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.Write("     -");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Floor");
+                    }
+                    else if (i == Map.GetRows() / 2 + 1)
+                    {
+                        Console.WriteLine($"     #     Wall");
+                    }
+                    else if (i == Map.GetRows() / 2 + 2)
+                    {
+                        Console.WriteLine($"     D     Door");
+                    }
+                    else if (i == Map.GetRows() / 2 + 3)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.Write("     k");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("     Key, needed to open some doors.");
+                        Console.WriteLine("     Key");
                     }
-                    else if (i == Map.GetRows() / 2 + 1)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"    Key: {player.GetKeys()}");
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    else if (i == Map.GetRows() / 2 + 2)
+                    else if (i == Map.GetRows() / 2 + 4)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine($"    SuperKey: {player.GetSuperKeys()}");
+                        Console.Write("     K");
                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Super Key");
+                    }
+                    else if (i == Map.GetRows() / 2 + 5)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.Write("     ~");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Mud");
+                    }
+                    else if (i == Map.GetRows() / 2 + 6)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("     M");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Monster");
                     }
                     else
                     {
@@ -64,32 +90,45 @@ namespace Lab4
                     }
                 }
 
-                Console.WriteLine($"Keys: {player.GetKeys()} Moves: {Player.Score}"); //Player stats
 
                 if (player.GetHurt()) //The player was hurt
                 {
+                    Player.Score += 4;
                     Console.WriteLine("The monster hurt you! You lost 5 moves.");
                 }
 
-                if (player.GetNeedKey()) //The player needs a key
+                else if (player.GetNeedKey()) //The player needs a key
                 {
                     Console.WriteLine("You need a key to open this door!");
                 }
 
-                if (player.GetUsedKey()) //The player used a key
+                else if (player.GetUsedKey()) //The player used a key
                 {
                     Console.WriteLine("You used a key to open the door!");
                 }
 
-                if (player.GetGotKey()) //The player got a key
+                else if (player.GetGotKey()) //The player got a key
                 {
                     Console.WriteLine("You picked up a key!");
                 }
 
-                if (player.GetGotSuperKey()) //The player got a key
+                else if (player.GetGotSuperKey()) //The player got a key
                 {
                     Console.WriteLine("You picked up a Superkey!");
                 }
+
+                else if (player.GetSteppedInMud())
+                {
+                    Player.Score += 2;
+                    Console.WriteLine("You stepped in mud! You lost 3 moves.");
+                }
+
+                else
+                {
+                    Console.WriteLine("                                        ");
+                }
+
+                Console.WriteLine($"Keys: {player.GetKeys()} Super Keys: {player.GetSuperKeys()} Moves: {Player.Score}"); //Player stats
 
                 player.ClearConditions(); //Clear special conditions
 
@@ -112,7 +151,8 @@ namespace Lab4
                 {
                     break;
                 }
-                Console.Clear();
+                Console.CursorLeft = 0;
+                Console.CursorTop = 0;
             }
             Win.YouWin();
         }

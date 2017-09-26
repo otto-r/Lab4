@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Door.cs" />
     <Compile Include="Exit.cs" />
+    <Compile Include="Mud.cs" />
     <Compile Include="SuperKey.cs" />
     <Compile Include="Key.cs" />
     <Compile Include="Floor.cs" />
