@@ -48,7 +48,7 @@
     <Compile Include="IPrintable.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Monster.cs" />
-    <Compile Include="Object.cs" />
+    <Compile Include="Tile.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

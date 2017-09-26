@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    public abstract class Object : IPrintable
+    public abstract class Tile : IPrintable
     {
         protected enum Objects { Wall = '#', Floor = '-', Player = '@', Door = 'D', Monster = 'M', Key = 'k', Void = 'X' };
         protected char Symbol;
         protected bool Solid;
         protected bool Danger;
+        protected bool Visible;
         public static int Score;
 
-        public Object()
+        public Tile()
         {
             Symbol = (char)Objects.Floor;
+            Visible = false;
         }
 
         public char GetSymbol()
@@ -37,6 +39,16 @@ namespace Lab4
         public void SetSolid(bool b)
         {
             Solid = b;
+        }
+
+        public bool IsVisible()
+        {
+            return Visible;
+        }
+
+        public void MakeVisible()
+        {
+            Visible = true;
         }
 
         public virtual void PrintSymbol(bool isHurt)
