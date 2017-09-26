@@ -6,18 +6,28 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    class Floor : Object , IPrintable
+    class Floor : Tile , IPrintable
     {
-        public Floor()
+        public Floor(bool visible)
         {
             Symbol = (char)Objects.Floor;
             Solid = false;
+            Visible = visible;
         }
         public override void PrintSymbol(bool isHurt)
         {
+            if (Visible)
+            {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write(Symbol);
             Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write(Symbol);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
     }
 }

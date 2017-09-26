@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    class Player : Object, IPrintable
+    class Player : Tile, IPrintable
     {
         private int XPosition;
         private int YPosition;
@@ -15,7 +15,7 @@ namespace Lab4
         private bool UsedKey;
         private bool GotKey;
         private int Keys;
-        Object temp = new Floor();
+        Tile temp = new Floor(true);
 
         public Player()
         {
@@ -23,6 +23,7 @@ namespace Lab4
             YPosition = 2;
             Symbol = (char)Objects.Player;
             Solid = true;
+            Visible = true;
         }
 
         public override void PrintSymbol(bool isHurt)
@@ -92,7 +93,7 @@ namespace Lab4
             return GotKey;
         }
 
-        public Object[,] MovePlayer(char input, Object[,] map, Player player)
+        public Tile[,] MovePlayer(char input, Tile[,] map, Player player)
         {
             if (input == 'w') //Go north
             {
@@ -121,11 +122,12 @@ namespace Lab4
                     if (temp is Key) //Checks if object is key
                     {
                         GotKey = true;
-                        temp = new Floor();
+                        temp = new Floor(true);
                         Keys++;
                     }
                     map[GetXPosition() - 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() - 1);
+                    map = ExpandVision(map, player); //Update visibility
                 }
             }
             if (input == 's') //Go south
@@ -155,11 +157,12 @@ namespace Lab4
                     if (temp is Key) //Checks if object is key
                     {
                         GotKey = true;
-                        temp = new Floor();
+                        temp = new Floor(true);
                         Keys++;
                     }
                     map[GetXPosition() + 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() + 1);
+                    map = ExpandVision(map, player); //Update visibility
                 }
             }
             if (input == 'a') //Go west
@@ -189,11 +192,12 @@ namespace Lab4
                     if (temp is Key) //Checks if object is key
                     {
                         GotKey = true;
-                        temp = new Floor();
+                        temp = new Floor(true);
                         Keys++;
                     }
                     map[GetXPosition(), GetYPosition() - 1] = player;
                     SetYPosition(GetYPosition() - 1);
+                    map = ExpandVision(map, player); //Update visibility
                 }
             }
             if (input == 'd') //Go east
@@ -223,11 +227,29 @@ namespace Lab4
                     if (temp is Key) //Checks if object is key
                     {
                         GotKey = true;
-                        temp = new Floor();
+                        temp = new Floor(true);
                         Keys++;
                     }
                     map[GetXPosition(), GetYPosition() + 1] = player;
                     SetYPosition(GetYPosition() + 1);
+                    map = ExpandVision(map, player); //Update visibility
+                }
+            }
+            return map;
+        }
+        public Tile[,] ExpandVision(Tile[,] map, Player player)
+        {
+            for (int i = player.XPosition - 2; i < player.XPosition + 3; i++)
+            {
+                for (int j = player.YPosition - 2; j < player.YPosition + 3; j++)
+                {
+                    if (i >= 0 && i < map.GetUpperBound(0))
+                    {
+                        if (!map[i, j].IsVisible())
+                        {
+                            map[i, j].MakeVisible();
+                        }
+                    }
                 }
             }
             return map;

@@ -11,7 +11,7 @@ namespace Lab4
     {
         static string MapCurrent = Properties.Resources.TestMap;
 
-        public static Object[,] GenerateMap()
+        public static Tile[,] GenerateMap()
         {
             Console.WriteLine("     Map:");
             Console.WriteLine("(1) Map:");
@@ -34,7 +34,7 @@ namespace Lab4
             int rows = ((MapString.Length - MapString2.Length) / 2 + 1);
             int columns = (MapString2.Length / rows);
             Console.WriteLine($"Mapstring: {MapString.Length} Mapstring2: {MapString2.Length}, Rows: {rows} Columns: {columns}");
-            Object[,] map = new Object[rows, columns];
+            Tile[,] map = new Tile[rows, columns];
 
             int counter = 0;
             for (int i = 0; i < rows; i++)
@@ -43,7 +43,11 @@ namespace Lab4
                 {
                     if (MapString2[counter] == '#')
                     {
-                        map[i, j] = new Wall();
+                        map[i, j] = new Wall(false);
+                    }
+                    else if (MapString2[counter] == '%')
+                    {
+                        map[i, j] = new Wall(true);
                     }
                     else if (MapString2[counter] == 'D')
                     {
@@ -51,7 +55,7 @@ namespace Lab4
                     }
                     else if (MapString2[counter] == '-')
                     {
-                        map[i, j] = new Floor();
+                        map[i, j] = new Floor(false);
                     }
                     else if (MapString2[counter] == 'k')
                     {

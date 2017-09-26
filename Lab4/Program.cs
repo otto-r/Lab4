@@ -15,7 +15,7 @@ namespace Lab4
             Monster monster1 = new Monster(3, 1);
             Monster monster2 = new Monster(3, 2);
 
-            Object[,] map = Map.GenerateMap(); //Create the map
+            Tile[,] map = Map.GenerateMap(); //Create the map
 
             map[player.GetXPosition(), player.GetYPosition()] = player; //Place player
             map[monster1.GetXPosition(), monster1.GetYPosition()] = monster1; //Place monster1
@@ -24,6 +24,8 @@ namespace Lab4
             Random r = new Random();
 
             char input;
+
+            map = player.ExpandVision(map, player); //Initial visibility
 
             while (true) //Main game loop
             {

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    class Monster : Object , IPrintable
+    class Monster : Tile, IPrintable
     {
         private int XPosition;
         private int YPosition;
-        Object temp = new Floor();
+        Tile temp = new Floor(true);
         Random r = new Random();
 
         public Monster(int x, int y)
@@ -24,7 +24,18 @@ namespace Lab4
 
         public override void PrintSymbol(bool isHurt)
         {
-            Console.Write(Symbol);
+            if (Visible)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write(Symbol);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write(Symbol);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
 
         public int GetXPosition()
@@ -47,7 +58,7 @@ namespace Lab4
             YPosition = y;
         }
 
-        public Object[,] MoveMonster(Object[,] map, Monster monster, int direction) //Moves monster in random direction
+        public Tile[,] MoveMonster(Tile[,] map, Monster monster, int direction) //Moves monster in random direction
         {
             if (direction == 0) //Move north
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    public class Void : Object , IPrintable
+    public class Void : Tile , IPrintable
     {
         public Void()
         {
