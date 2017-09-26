@@ -27,7 +27,7 @@ namespace Lab4
 
         public override void PrintSymbol(bool isHurt)
         {
-            if (isHurt)
+            if (isHurt) //Player is hurt, make it red
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(Symbol);
@@ -59,7 +59,7 @@ namespace Lab4
             YPosition = y;
         }
 
-        public void ClearConditions()
+        public void ClearConditions() //Clear all temporary conditions
         {
             Hurt = false;
             NeedKey = false;
@@ -101,7 +101,7 @@ namespace Lab4
                     Player.Score += 4;
                     Hurt = true;
                 }
-                if (map[GetXPosition() - 1, GetYPosition()].IsSolid() && map[GetXPosition() - 1, GetYPosition()].GetSymbol() == 'D') //Checks for locked door
+                if (map[GetXPosition() - 1, GetYPosition()].IsSolid() && map[GetXPosition() - 1, GetYPosition()] is Door) //Checks for locked door
                 {
                     if (Keys > 0) //Unlock door
                     {
@@ -118,7 +118,7 @@ namespace Lab4
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() - 1, GetYPosition()];
-                    if (temp.GetSymbol() == 'k') //Checks if object is key
+                    if (temp is Key) //Checks if object is key
                     {
                         GotKey = true;
                         temp = new Floor();
@@ -135,7 +135,7 @@ namespace Lab4
                     Player.Score += 4;
                     Hurt = true;
                 }
-                if (map[GetXPosition() + 1, GetYPosition()].IsSolid() && map[GetXPosition() + 1, GetYPosition()].GetSymbol() == 'D') //Checks for locked door
+                if (map[GetXPosition() + 1, GetYPosition()].IsSolid() && map[GetXPosition() + 1, GetYPosition()] is Door) //Checks for locked door
                 {
                     if (Keys > 0) //Unlock door
                     {
@@ -152,7 +152,7 @@ namespace Lab4
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() + 1, GetYPosition()];
-                    if (temp.GetSymbol() == 'k') //Checks if object is key
+                    if (temp is Key) //Checks if object is key
                     {
                         GotKey = true;
                         temp = new Floor();
@@ -169,7 +169,7 @@ namespace Lab4
                     Player.Score += 4;
                     Hurt = true;
                 }
-                if (map[GetXPosition(), GetYPosition() - 1].IsSolid() && map[GetXPosition(), GetYPosition() - 1].GetSymbol() == 'D') //Checks for locked door
+                if (map[GetXPosition(), GetYPosition() - 1].IsSolid() && map[GetXPosition(), GetYPosition() - 1] is Door) //Checks for locked door
                 {
                     if (Keys > 0) //Unlock door
                     {
@@ -186,7 +186,7 @@ namespace Lab4
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() - 1];
-                    if (temp.GetSymbol() == 'k') //Checks if object is key
+                    if (temp is Key) //Checks if object is key
                     {
                         GotKey = true;
                         temp = new Floor();
@@ -203,7 +203,7 @@ namespace Lab4
                     Player.Score += 4;
                     Hurt = true;
                 }
-                if (map[GetXPosition(), GetYPosition() + 1].IsSolid() && map[GetXPosition(), GetYPosition() + 1].GetSymbol() == 'D') //Checks for locked door
+                if (map[GetXPosition(), GetYPosition() + 1].IsSolid() && map[GetXPosition(), GetYPosition() + 1] is Door) //Checks for locked door
                 {
                     if (Keys > 0) //Unlock door
                     {
@@ -220,7 +220,7 @@ namespace Lab4
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() + 1];
-                    if (temp.GetSymbol() == 'k') //Checks if object is key
+                    if (temp is Key) //Checks if object is key
                     {
                         GotKey = true;
                         temp = new Floor();

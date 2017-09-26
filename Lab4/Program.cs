@@ -12,19 +12,22 @@ namespace Lab4
         static void Main(string[] args)
         {
             Player player = new Player();
-            Monster monster1 = new Monster();
-            //Monster monster2 = new Monster();
+            Monster monster1 = new Monster(3, 1);
+            Monster monster2 = new Monster(3, 2);
 
-            Object[,] map  = Map.GenerateMap();
+            Object[,] map = Map.GenerateMap(); //Create the map
 
-            map[2, 2] = player;
-            map[3, 1] = monster1;
-            //map[9, 33] = monster2;
+            map[player.GetXPosition(), player.GetYPosition()] = player; //Place player
+            map[monster1.GetXPosition(), monster1.GetYPosition()] = monster1; //Place monster1
+            map[monster2.GetXPosition(), monster2.GetYPosition()] = monster2; //Place monster2
+
+            Random r = new Random();
 
             char input;
-            while (true)
+
+            while (true) //Main game loop
             {
-                for (int i = 0; i < Map.GetRows(); i++)
+                for (int i = 0; i < Map.GetRows(); i++) //Print the map
                 {
                     for (int j = 0; j < Map.GetColumns(); j++)
                     {
@@ -47,38 +50,44 @@ namespace Lab4
                     }
                 }
 
-                Console.WriteLine($"Keys: {player.GetKeys()} Moves: {Player.Score}");
+                Console.WriteLine($"Keys: {player.GetKeys()} Moves: {Player.Score}"); //Player stats
 
-                if (player.GetHurt())
+                if (player.GetHurt()) //The player was hurt
                 {
                     Console.WriteLine("The monster hurt you! You lost 5 moves.");
                 }
-                
-                if (player.GetNeedKey())
+
+                if (player.GetNeedKey()) //The player needs a key
                 {
                     Console.WriteLine("You need a key to open this door!");
                 }
 
-                if (player.GetUsedKey())
+                if (player.GetUsedKey()) //The player used a key
                 {
                     Console.WriteLine("You used a key to open the door!");
                 }
 
-                if (player.GetGotKey())
+                if (player.GetGotKey()) //The player got a key
                 {
                     Console.WriteLine("You picked up a key!");
                 }
 
-                player.ClearConditions();
+                player.ClearConditions(); //Clear special conditions
 
-                // borde lägga till så att enbart WASD skickas in i metod, så att de inte räknas i "score". kan lägga meny etc på fler knappar
-                input = Console.ReadKey(true).KeyChar;
-                
-                map = player.MovePlayer(input, map, player);
-                map = monster1.MoveMonster(map, monster1);
-                //map = monster2.MoveMonster(map, monster2);
+                while (true) //Waits for legit input
+                {
+                    input = Console.ReadKey(true).KeyChar; //Get input
+                    if (input == 'w' || input == 'a' || input == 's' || input == 'd')
+                    {
+                        break;
+                    }
+                }
 
-                Player.Score++;
+                map = player.MovePlayer(input, map, player); //Move player
+                map = monster1.MoveMonster(map, monster1, r.Next(0, 4)); //Move monster1
+                map = monster2.MoveMonster(map, monster2, r.Next(0, 4)); //Move monster2
+
+                Player.Score++; //Add a move
                 Console.Clear();
             }
         }

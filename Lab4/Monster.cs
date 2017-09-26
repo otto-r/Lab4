@@ -13,11 +13,10 @@ namespace Lab4
         Object temp = new Floor();
         Random r = new Random();
 
-        public Monster()
+        public Monster(int x, int y)
         {
-            // Fixa kod så att om man har fler monster de inte börjar på samma plats
-            XPosition = 3;
-            YPosition = 1;
+            XPosition = x;
+            YPosition = y;
             Symbol = (char)Objects.Monster;
             Solid = true;
             Danger = true;
@@ -48,10 +47,9 @@ namespace Lab4
             YPosition = y;
         }
 
-        public Object[,] MoveMonster(Object[,] map, Monster monster)
+        public Object[,] MoveMonster(Object[,] map, Monster monster, int direction) //Moves monster in random direction
         {
-            int direction = r.Next(0, 4);
-            if (direction == 0)
+            if (direction == 0) //Move north
             {
                 if (!map[GetXPosition() - 1, GetYPosition()].IsSolid())
                 {
@@ -61,7 +59,7 @@ namespace Lab4
                     SetXPosition(GetXPosition() - 1);
                 }
             }
-            if (direction == 1)
+            if (direction == 1) //Move south
             {
                 if (!map[GetXPosition() + 1, GetYPosition()].IsSolid())
                 {
@@ -71,7 +69,7 @@ namespace Lab4
                     SetXPosition(GetXPosition() + 1);
                 }
             }
-            if (direction == 2)
+            if (direction == 2) //Move west
             {
                 if (!map[GetXPosition(), GetYPosition() - 1].IsSolid())
                 {
@@ -81,7 +79,7 @@ namespace Lab4
                     SetYPosition(GetYPosition() - 1);
                 }
             }
-            if (direction == 3)
+            if (direction == 3) // Move east
             {
                 if (!map[GetXPosition(), GetYPosition() + 1].IsSolid())
                 {
