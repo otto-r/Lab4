@@ -1,5 +1,5 @@
 ###########xxxx################xxxxxxx
-#---------######--------------k#xxxxxx
+#--------O######--------------k#xxxxxx
 #--------------#-----##########xxxxxxx
 #-------k------D-----#xxxxxxxxxxxxxxxx
 #---------#######D#####xxxxxxxxxxxxxxx
@@ -15,7 +15,7 @@
 #---------D--------#--####xxxxxxxxxxxx
 #---------#-------#------#xxxxxxxxxxxx
 #---------#------#----#--#xxxxxxxxxxxx
-#######D###############--#xxxxxxxxxxxx
+##O####D###############--#xxxxxxxxxxxx
 xxxxxx#-#xxxxxxxxxxxxx#--#xxxxxxxxxxxx
 xxxxxx#-###############--#xxxxxxxxxxxx
 xxxxxx#------------------#xxxxxxxxxxxx
