@@ -14,6 +14,7 @@ namespace Lab4
         private bool NeedKey;
         private bool UsedKey;
         private bool GotKey;
+        private bool PlayerWin;
         private int Keys;
         Tile temp = new Floor(true);
 
@@ -93,11 +94,16 @@ namespace Lab4
             return GotKey;
         }
 
+        public bool GetPlayerWin()
+        {
+            return PlayerWin;
+        }
+
         public Tile[,] MovePlayer(char input, Tile[,] map, Player player)
         {
             if (input == 'w') //Go north
             {
-                if (map[GetXPosition() - 1, GetYPosition()].GetDanger()) //Checks if object is dangerous
+                if (map[GetXPosition() - 1, GetYPosition()].GetDanger()) //Checks if tile is dangerous
                 {
                     Player.Score += 4;
                     Hurt = true;
@@ -115,15 +121,19 @@ namespace Lab4
                         NeedKey = true;
                     }
                 }
-                if (!map[GetXPosition() - 1, GetYPosition()].IsSolid()) //Checks if object is solid
+                if (!map[GetXPosition() - 1, GetYPosition()].IsSolid()) //Checks if tile is solid
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() - 1, GetYPosition()];
-                    if (temp is Key) //Checks if object is key
+                    if (temp is Key) //Checks if tile is key
                     {
                         GotKey = true;
                         temp = new Floor(true);
                         Keys++;
+                    }
+                    if (temp is Exit) //Checks if tile is exit
+                    {
+                        PlayerWin = true;
                     }
                     map[GetXPosition() - 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() - 1);
@@ -132,7 +142,7 @@ namespace Lab4
             }
             if (input == 's') //Go south
             {
-                if (map[GetXPosition() + 1, GetYPosition()].GetDanger()) //Checks if object is dangerous
+                if (map[GetXPosition() + 1, GetYPosition()].GetDanger()) //Checks if tile is dangerous
                 {
                     Player.Score += 4;
                     Hurt = true;
@@ -150,15 +160,19 @@ namespace Lab4
                         NeedKey = true;
                     }
                 }
-                if (!map[GetXPosition() + 1, GetYPosition()].IsSolid()) //Checks if object is solid
+                if (!map[GetXPosition() + 1, GetYPosition()].IsSolid()) //Checks if tile is solid
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() + 1, GetYPosition()];
-                    if (temp is Key) //Checks if object is key
+                    if (temp is Key) //Checks if tile is key
                     {
                         GotKey = true;
                         temp = new Floor(true);
                         Keys++;
+                    }
+                    if (temp is Exit) //Checks if tile is Exit
+                    {
+                        PlayerWin = true;
                     }
                     map[GetXPosition() + 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() + 1);
@@ -167,7 +181,7 @@ namespace Lab4
             }
             if (input == 'a') //Go west
             {
-                if (map[GetXPosition(), GetYPosition() - 1].GetDanger()) //Checks if object is dangerous
+                if (map[GetXPosition(), GetYPosition() - 1].GetDanger()) //Checks if tile is dangerous
                 {
                     Player.Score += 4;
                     Hurt = true;
@@ -185,15 +199,19 @@ namespace Lab4
                         NeedKey = true;
                     }
                 }
-                if (!map[GetXPosition(), GetYPosition() - 1].IsSolid()) //Checks if object is solid
+                if (!map[GetXPosition(), GetYPosition() - 1].IsSolid()) //Checks if tile is solid
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() - 1];
-                    if (temp is Key) //Checks if object is key
+                    if (temp is Key) //Checks if tile is key
                     {
                         GotKey = true;
                         temp = new Floor(true);
                         Keys++;
+                    }
+                    if (temp is Exit) //Checks if object is exit
+                    {
+                        PlayerWin = true;
                     }
                     map[GetXPosition(), GetYPosition() - 1] = player;
                     SetYPosition(GetYPosition() - 1);
@@ -202,7 +220,7 @@ namespace Lab4
             }
             if (input == 'd') //Go east
             {
-                if (map[GetXPosition(), GetYPosition() + 1].GetDanger()) //Checks if object is dangerous
+                if (map[GetXPosition(), GetYPosition() + 1].GetDanger()) //Checks if tile is dangerous
                 {
                     Player.Score += 4;
                     Hurt = true;
@@ -220,15 +238,19 @@ namespace Lab4
                         NeedKey = true;
                     }
                 }
-                if (!map[GetXPosition(), GetYPosition() + 1].IsSolid()) //Checks if object is solid
+                if (!map[GetXPosition(), GetYPosition() + 1].IsSolid()) //Checks if tile is solid
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() + 1];
-                    if (temp is Key) //Checks if object is key
+                    if (temp is Key) //Checks if tile is key
                     {
                         GotKey = true;
                         temp = new Floor(true);
                         Keys++;
+                    }
+                    if (temp is Exit) //Checks if object is exit
+                    {
+                        PlayerWin = true;
                     }
                     map[GetXPosition(), GetYPosition() + 1] = player;
                     SetYPosition(GetYPosition() + 1);

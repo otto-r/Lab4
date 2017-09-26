@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    public class Exit : Object, IPrintable
+    public class Exit : Tile, IPrintable
     {
         public Exit()
         {
