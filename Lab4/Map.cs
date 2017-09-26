@@ -84,6 +84,10 @@ namespace Lab4
                     {
                         map[i, j] = new Mud();
                     }
+                    else if (MapString2[counter] == '/')
+                    {
+                        map[i, j] = new Lever();
+                    }
                     counter++;
                 }
             }
