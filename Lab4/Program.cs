@@ -123,6 +123,11 @@ namespace Lab4
                     Console.WriteLine("You stepped in mud! You lost 3 moves.");
                 }
 
+                else if (player.GetPulledLever())
+                {
+                    Console.WriteLine("You pulled the lever!");
+                }
+
                 else
                 {
                     Console.WriteLine("                                        ");

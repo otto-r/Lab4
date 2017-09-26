@@ -11,32 +11,33 @@ namespace Lab4
         public Lever()
         {
             Symbol = (char)Objects.Lever;
-            private bool Pulled = false;
-    }
-    public override void PrintSymbol(bool isHurt)
-    {
-        if (Visible)
+            Pulled = false;
+        }
+
+        public override void PrintSymbol(bool isHurt)
         {
-            if (Pulled)
+            if (Visible)
             {
-                Symbol = '/';
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write(Symbol);
+                if (Pulled)
+                {
+                    Symbol = '|';
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.Write(Symbol);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.Write(Symbol);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
             else
             {
-                Symbol = '\';
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.ForegroundColor = ConsoleColor.Black;
                 Console.Write(Symbol);
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
-        else
-        {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write(Symbol);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
     }
-}
 }

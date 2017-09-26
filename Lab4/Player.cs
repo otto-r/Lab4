@@ -17,6 +17,7 @@ namespace Lab4
         private bool GotSuperKey;
         private bool PlayerWin;
         private bool SteppedInMud;
+        private bool PulledLever;
         private int Keys;
         private int SuperKeys;
         Tile temp = new Floor(true);
@@ -72,6 +73,7 @@ namespace Lab4
             GotKey = false;
             GotSuperKey = false;
             SteppedInMud = false;
+            PulledLever = false;
         }
 
         public int GetKeys()
@@ -117,6 +119,11 @@ namespace Lab4
         public bool GetSteppedInMud()
         {
             return SteppedInMud;
+        }
+
+        public bool GetPulledLever()
+        {
+            return PulledLever;
         }
 
         public Tile[,] MovePlayer(char input, Tile[,] map, Player player)
@@ -169,6 +176,11 @@ namespace Lab4
                     if (temp is Mud) //Checks if tile is mud
                     {
                         SteppedInMud = true;
+                    }
+                    if (temp is Lever && !temp.IsPulled()) //Checks if tile is lever
+                    {
+                        temp.PullLever();
+                        PulledLever = true;
                     }
                     map[GetXPosition() - 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() - 1);
@@ -224,6 +236,11 @@ namespace Lab4
                     {
                         SteppedInMud = true;
                     }
+                    if (temp is Lever && !temp.IsPulled()) //Checks if tile is lever
+                    {
+                        temp.PullLever();
+                        PulledLever = true;
+                    }
                     map[GetXPosition() + 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() + 1);
                     map = ExpandVision(map, player); //Update visibility
@@ -278,6 +295,11 @@ namespace Lab4
                     {
                         SteppedInMud = true;
                     }
+                    if (temp is Lever && !temp.IsPulled()) //Checks if tile is lever
+                    {
+                        temp.PullLever();
+                        PulledLever = true;
+                    }
                     map[GetXPosition(), GetYPosition() - 1] = player;
                     SetYPosition(GetYPosition() - 1);
                     map = ExpandVision(map, player); //Update visibility
@@ -331,6 +353,11 @@ namespace Lab4
                     if (temp is Mud) //Checks if tile is mud
                     {
                         SteppedInMud = true;
+                    }
+                    if (temp is Lever && !player.IsPulled()) //Checks if tile is lever
+                    {
+                        temp.PullLever();
+                        PulledLever = true;
                     }
                     map[GetXPosition(), GetYPosition() + 1] = player;
                     SetYPosition(GetYPosition() + 1);
