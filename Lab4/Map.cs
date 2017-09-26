@@ -61,6 +61,10 @@ namespace Lab4
                     {
                         map[i, j] = new Key();
                     }
+                    else if (MapString2[counter] == 'K')
+                    {
+                        map[i, j] = new SuperKey();
+                    }
                     else if (MapString2[counter] == 'x')
                     {
                         map[i, j] = new Void();
