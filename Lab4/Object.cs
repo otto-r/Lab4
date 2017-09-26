@@ -8,7 +8,7 @@ namespace Lab4
 {
     public abstract class Object : IPrintable
     {
-        protected enum Objects { Wall = '#', Floor = '-', Player = '@', Door = 'D', Monster = 'M', Key = 'k', Void = 'X' };
+        protected enum Objects { Wall = '#', Floor = '-', Player = '@', Door = 'D', Monster = 'M', Key = 'k', Void = 'X', Exit = 'O' };
         protected char Symbol;
         protected bool Solid;
         protected bool Danger;

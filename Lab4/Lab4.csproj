@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Door.cs" />
+    <Compile Include="Exit.cs" />
     <Compile Include="Key.cs" />
     <Compile Include="Floor.cs" />
     <Compile Include="IPrintable.cs" />
@@ -59,6 +60,7 @@
     </Compile>
     <Compile Include="Void.cs" />
     <Compile Include="Wall.cs" />
+    <Compile Include="Win.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

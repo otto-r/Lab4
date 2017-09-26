@@ -14,6 +14,7 @@ namespace Lab4
         private bool NeedKey;
         private bool UsedKey;
         private bool GotKey;
+        private bool PlayerWin;
         private int Keys;
         Object temp = new Floor();
 
@@ -92,6 +93,11 @@ namespace Lab4
             return GotKey;
         }
 
+        public bool GetPlayerWin()
+        {
+            return PlayerWin;
+        }
+
         public Object[,] MovePlayer(char input, Object[,] map, Player player)
         {
             if (input == 'w') //Go north
@@ -123,6 +129,10 @@ namespace Lab4
                         GotKey = true;
                         temp = new Floor();
                         Keys++;
+                    }
+                    if (temp is Exit) //Checks if object is Exit
+                    {
+                        PlayerWin = true;
                     }
                     map[GetXPosition() - 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() - 1);
@@ -158,6 +168,10 @@ namespace Lab4
                         temp = new Floor();
                         Keys++;
                     }
+                    if (temp is Exit) //Checks if object is Exit
+                    {
+                        PlayerWin = true;
+                    }
                     map[GetXPosition() + 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() + 1);
                 }
@@ -192,6 +206,10 @@ namespace Lab4
                         temp = new Floor();
                         Keys++;
                     }
+                    if (temp is Exit) //Checks if object is Exit
+                    {
+                        PlayerWin = true;
+                    }
                     map[GetXPosition(), GetYPosition() - 1] = player;
                     SetYPosition(GetYPosition() - 1);
                 }
@@ -225,6 +243,10 @@ namespace Lab4
                         GotKey = true;
                         temp = new Floor();
                         Keys++;
+                    }
+                    if (temp is Exit) //Checks if object is Exit
+                    {
+                        PlayerWin = true;
                     }
                     map[GetXPosition(), GetYPosition() + 1] = player;
                     SetYPosition(GetYPosition() + 1);
