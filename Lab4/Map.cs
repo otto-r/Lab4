@@ -17,12 +17,20 @@ namespace Lab4
             Console.WriteLine("(1) Map:");
             Console.WriteLine("(2) TestMap:");
 
-            string input = Console.ReadLine();
-            if (input == "1")
+            char input;
+            while (true) //Waits for legit input
+            {
+                input = Console.ReadKey(true).KeyChar; //Get input
+                if (input == '1' || input == '2')
+                {
+                    break;
+                }
+            }
+            if (input == '1')
             {
                 MapCurrent = Properties.Resources.Map;
             }
-            else if (input == "2")
+            else if (input == '2')
             {
                 MapCurrent = Properties.Resources.TestMap;
             }
