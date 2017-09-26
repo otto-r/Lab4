@@ -33,7 +33,6 @@ namespace Lab4
             String MapString2 = MapString.Replace(Environment.NewLine, "");
             int rows = ((MapString.Length - MapString2.Length) / 2 + 1);
             int columns = (MapString2.Length / rows);
-            //Console.WriteLine($"Mapstring: {MapString.Length} Mapstring2: {MapString2.Length}, Rows: {rows} Columns: {columns}");
             Tile[,] map = new Tile[rows, columns];
 
             int counter = 0;
