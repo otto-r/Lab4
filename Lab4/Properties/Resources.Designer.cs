@@ -61,19 +61,32 @@ namespace Lab4.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ###########xxxx################xxxxxxx
-        ///#---------######---------------#xxxxxx
-        ///#--------------#-----##########xxxxxxx
-        ///#--------------D-----#xxxxxxxxxxxxxxxx
-        ///#---------#######D#####xxxxxxxxxxxxxxx
-        ///#####D#####xx---------#xxxxxxxxxxxxxxx
-        ///#---------#xx---------#xxxxxxxxxxxxxxx
-        ///#---------#-----#-----#xxxxxxxx###xxxx
-        ///#---------#----#-#----#xxxxxxx#--k#xxx
-        ///#---------#-----#-----#xxxxxxx#---#xxx
-        ///#####D#####-----------#xxxxxxxx###xxxx
-        ///#---------#-----------#xxxxxxxxxxxxxxx
-        ///#---------#-----------#xxxxxxxxx [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Otto,1
+        ///Stalin,432
+        ///Lenin,77
+        ///Bakunin,324
+        ///.
+        /// </summary>
+        internal static string HighScore {
+            get {
+                return ResourceManager.GetString("HighScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to %%%%%%%%%%%xxxx%%%%%%%%%%%%%%%%%xxxxxx
+        ///%-----/---%%%%%%--------------k%xxxxxx
+        ///%----------~---#-----%%%%%%%%%%%xxxxxx
+        ///%-------k--~---D-----%xxxxxxxxxxxxxxxx
+        ///%---------#######D###%%xxxxxxxxxxxxxxx
+        ///%####D#####xx---------%xxxxxxxxxxxxxxx
+        ///%---------#xx---------%xxxxxxxxxxxxxxx
+        ///%---------#-----#-----%xxxxxxxx###xxxx
+        ///%---------#----#-#----%xxxxxxx#--k#xxx
+        ///%---------#-----#-----%xxxxxxx#---#xxx
+        ///%####D#####-----------%xxxxxxxx###xxxx
+        ///%---------#-----------%xxxxxxxxxxxxxxx
+        ///%---------#-----------%xxxxxxxxx [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Map {
             get {
@@ -82,16 +95,16 @@ namespace Lab4.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to xx###xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-        ///x#---#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-        ///x#----#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-        ///xx#----#xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-        ///xxx###--####xxxxxxxxxxxxxxxxxxxxxxxxx
-        ///xxxxxx#-----#xxxxxxxxxxxxxxxxxxxxxxxx
-        ///xxxxxxx#####xxxxxxxxxxxxxxxxxxxxxxxxx
-        ///xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-        ///xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-        ///xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+        ///   Looks up a localized string similar to #####################xxxxxxxxxxxxxxx
+        ///#-----------k-K--D---#xxxxxxxxxxxxxx
+        ///#----------------#----#xxxxxxxxxxxxx
+        ///#-------xxx-D----xx#----#xxxxxxxxxxx
+        ///#-------xxx-D----xxx###--####xxxxxxx
+        ///#-------xxxKD----xxxxxx#-----#xxxxxx
+        ///#-------xxxkD----xxxxxxx#####xxxxxxx
+        ///#------O-------DDxxxxxxxxxxxxxxxxxxx
+        ///#--------------DDxxxxxxxxxxxxxxxxxxx
+        ///x#x#x#x#x#x#x#x#xxxxxxxxxxxxxxxxxxxx.
         /// </summary>
         internal static string TestMap {
             get {
