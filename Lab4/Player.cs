@@ -15,12 +15,14 @@ namespace Lab4
         private bool UsedKey;
         private bool GotKey;
         private bool GotSuperKey;
+        private bool GotBoots;
         private bool PlayerWin;
         private bool SteppedInMud;
         private bool PulledLever;
         private int Keys;
         private int SuperKeys;
-        Tile temp = new Floor(true);
+        private Tile Gear;
+        private Tile temp;
 
         public Player()
         {
@@ -29,6 +31,8 @@ namespace Lab4
             Symbol = (char)Objects.Player;
             Solid = true;
             Visible = true;
+            Gear = new Floor(true);
+            temp = new Floor(true);
         }
 
         public override void PrintSymbol(bool isHurt)
@@ -74,6 +78,7 @@ namespace Lab4
             GotSuperKey = false;
             SteppedInMud = false;
             PulledLever = false;
+            GotBoots = false;
         }
 
         public int GetKeys()
@@ -126,6 +131,16 @@ namespace Lab4
             return PulledLever;
         }
 
+        public bool GetGotBoots()
+        {
+            return GotBoots;
+        }
+
+        public Tile GetGear()
+        {
+            return Gear;
+        }
+
         public Tile[,] MovePlayer(char input, Tile[,] map, Player player)
         {
             if (input == 'w') //Go north
@@ -157,31 +172,7 @@ namespace Lab4
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() - 1, GetYPosition()];
-                    if (temp is Key) //Checks if tile is key
-                    {
-                        GotKey = true;
-                        temp = new Floor(true);
-                        Keys++;
-                    }
-                    if (temp is SuperKey) //Checks if tile is superkey
-                    {
-                        GotSuperKey = true;
-                        temp = new Floor(true);
-                        SuperKeys+=3;
-                    }
-                    if (temp is Exit) //Checks if tile is exit
-                    {
-                        PlayerWin = true;
-                    }
-                    if (temp is Mud) //Checks if tile is mud
-                    {
-                        SteppedInMud = true;
-                    }
-                    if (temp is Lever && !temp.IsPulled()) //Checks if tile is lever
-                    {
-                        temp.PullLever();
-                        PulledLever = true;
-                    }
+                    temp = CheckTile(temp); // Checks for special tile
                     map[GetXPosition() - 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() - 1);
                     map = ExpandVision(map, player); //Update visibility
@@ -216,31 +207,7 @@ namespace Lab4
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition() + 1, GetYPosition()];
-                    if (temp is Key) //Checks if tile is key
-                    {
-                        GotKey = true;
-                        temp = new Floor(true);
-                        Keys++;
-                    }
-                    if (temp is SuperKey) //Checks if tile is superkey
-                    {
-                        GotKey = true;
-                        temp = new Floor(true);
-                        SuperKeys += 3;
-                    }
-                    if (temp is Exit) //Checks if tile is Exit
-                    {
-                        PlayerWin = true;
-                    }
-                    if (temp is Mud) //Checks if tile is mud
-                    {
-                        SteppedInMud = true;
-                    }
-                    if (temp is Lever && !temp.IsPulled()) //Checks if tile is lever
-                    {
-                        temp.PullLever();
-                        PulledLever = true;
-                    }
+                    temp = CheckTile(temp); // Checks for special tile
                     map[GetXPosition() + 1, GetYPosition()] = player;
                     SetXPosition(GetXPosition() + 1);
                     map = ExpandVision(map, player); //Update visibility
@@ -275,31 +242,7 @@ namespace Lab4
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() - 1];
-                    if (temp is Key) //Checks if tile is key
-                    {
-                        GotKey = true;
-                        temp = new Floor(true);
-                        Keys++;
-                    }
-                    if (temp is SuperKey) //Checks if tile is superkey
-                    {
-                        GotKey = true;
-                        temp = new Floor(true);
-                        SuperKeys += 3;
-                    }
-                    if (temp is Exit) //Checks if tile is exit
-                    {
-                        PlayerWin = true;
-                    }
-                    if (temp is Mud) //Checks if tile is mud
-                    {
-                        SteppedInMud = true;
-                    }
-                    if (temp is Lever && !temp.IsPulled()) //Checks if tile is lever
-                    {
-                        temp.PullLever();
-                        PulledLever = true;
-                    }
+                    temp = CheckTile(temp); // Checks for special tile
                     map[GetXPosition(), GetYPosition() - 1] = player;
                     SetYPosition(GetYPosition() - 1);
                     map = ExpandVision(map, player); //Update visibility
@@ -334,31 +277,7 @@ namespace Lab4
                 {
                     map[XPosition, YPosition] = temp;
                     temp = map[GetXPosition(), GetYPosition() + 1];
-                    if (temp is Key) //Checks if tile is key
-                    {
-                        GotKey = true;
-                        temp = new Floor(true);
-                        Keys++;
-                    }
-                    if (temp is SuperKey) //Checks if tile is superkey
-                    {
-                        GotKey = true;
-                        temp = new Floor(true);
-                        SuperKeys += 3;
-                    }
-                    if (temp is Exit) //Checks if object is exit
-                    {
-                        PlayerWin = true;
-                    }
-                    if (temp is Mud) //Checks if tile is mud
-                    {
-                        SteppedInMud = true;
-                    }
-                    if (temp is Lever && !player.IsPulled()) //Checks if tile is lever
-                    {
-                        temp.PullLever();
-                        PulledLever = true;
-                    }
+                    temp = CheckTile(temp); // Checks for special tile
                     map[GetXPosition(), GetYPosition() + 1] = player;
                     SetYPosition(GetYPosition() + 1);
                     map = ExpandVision(map, player); //Update visibility
@@ -366,7 +285,7 @@ namespace Lab4
             }
             return map;
         }
-        public Tile[,] ExpandVision(Tile[,] map, Player player)
+        public Tile[,] ExpandVision(Tile[,] map, Player player) //Gives new vision as player moves
         {
             for (int i = player.XPosition - 2; i < player.XPosition + 3; i++)
             {
@@ -382,6 +301,41 @@ namespace Lab4
                 }
             }
             return map;
+        }
+        public Tile CheckTile(Tile tile)
+        {
+            if (tile is Key) //Checks if tile is key
+            {
+                GotKey = true;
+                tile = new Floor(true);
+                Keys++;
+            }
+            else if (tile is SuperKey) //Checks if tile is superkey
+            {
+                GotSuperKey = true;
+                tile = new Floor(true);
+                SuperKeys += 3;
+            }
+            else if (tile is Exit) //Checks if tile is exit
+            {
+                PlayerWin = true;
+            }
+            else if (tile is Mud) //Checks if tile is mud
+            {
+                SteppedInMud = true;
+            }
+            else if (tile is Lever && !temp.IsPulled()) //Checks if tile is lever
+            {
+                tile.PullLever();
+                PulledLever = true;
+            }
+            else if (tile is Boots) //Checks if tile is boots
+            {
+                GotBoots = true;
+                Gear = tile;
+                tile = new Floor(true);
+            }
+            return tile;
         }
     }
 }

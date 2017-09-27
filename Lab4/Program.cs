@@ -117,15 +117,27 @@ namespace Lab4
                     Console.WriteLine("You picked up a Superkey!");
                 }
 
-                else if (player.GetSteppedInMud())
+                else if (player.GetSteppedInMud()) //The player stepped in mud
                 {
-                    Player.Score += 2;
-                    Console.WriteLine("You stepped in mud! You lost 3 moves.");
+                    if (!(player.GetGear() is Boots))
+                    {
+                        Player.Score += 2;
+                        Console.WriteLine("You stepped in mud! You lost 3 moves.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Your boots makes it easy to walk in mud!");
+                    }
                 }
 
-                else if (player.GetPulledLever())
+                else if (player.GetPulledLever()) //The player pulled a lever
                 {
                     Console.WriteLine("You pulled the lever!");
+                }
+
+                else if (player.GetGotBoots())
+                {
+                    Console.WriteLine("You picked up boots!");
                 }
 
                 else
@@ -133,7 +145,8 @@ namespace Lab4
                     Console.WriteLine("                                        ");
                 }
 
-                Console.WriteLine($"Keys: {player.GetKeys()} Super Keys: {player.GetSuperKeys()} Moves: {Player.Score}"); //Player stats
+                Console.WriteLine($"Keys: {player.GetKeys()} Super Keys: {player.GetSuperKeys()} Moves: {Player.Score} Gear: {player.GetGear().GetName()}"); //Player stats
+                //Console.WriteLine($"Gear: {player.GetGearName()}");
 
                 player.ClearConditions(); //Clear special conditions
 

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boots.cs" />
     <Compile Include="HighScore.cs" />
     <Compile Include="HighScoreBoard.cs" />
     <Compile Include="Lever.cs" />

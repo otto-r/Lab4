@@ -88,6 +88,10 @@ namespace Lab4
                     {
                         map[i, j] = new Lever();
                     }
+                    else if (MapString2[counter] == 'b')
+                    {
+                        map[i, j] = new Boots();
+                    }
                     counter++;
                 }
             }

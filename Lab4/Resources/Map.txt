@@ -7,7 +7,7 @@
 %---------#xx---------%xxxxxxxxxxxxxxx
 %---------#-----#-----%xxxxxxxx###xxxx
 %---------#----#-#----%xxxxxxx#--k#xxx
-%---------#-----#-----%xxxxxxx#---#xxx
+%-b-------#-----#-----%xxxxxxx#---#xxx
 %####D#####-----------%xxxxxxxx###xxxx
 %---------#-----------%xxxxxxxxxxxxxxx
 %---------#-----------%xxxxxxxxxxxxxxx
