@@ -19,10 +19,10 @@ namespace Lab4
         private bool PlayerWin;
         private bool SteppedInMud;
         private bool PulledLever;
-        private Tile Gear;
         private int Keys;
         private int SuperKeys;
-        Tile temp = new Floor(true);
+        private Tile Gear;
+        private Tile temp;
 
         public Player()
         {
@@ -32,6 +32,7 @@ namespace Lab4
             Solid = true;
             Visible = true;
             Gear = new Floor(true);
+            temp = new Floor(true);
         }
 
         public override void PrintSymbol(bool isHurt)
@@ -331,8 +332,8 @@ namespace Lab4
             else if (tile is Boots) //Checks if tile is boots
             {
                 GotBoots = true;
-                tile = new Floor(true);
                 Gear = tile;
+                tile = new Floor(true);
             }
             return tile;
         }
