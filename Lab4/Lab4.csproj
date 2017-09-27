@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boots.cs" />
     <Compile Include="Lever.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="Exit.cs" />

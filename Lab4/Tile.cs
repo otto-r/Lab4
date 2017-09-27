@@ -8,18 +8,20 @@ namespace Lab4
 {
     public abstract class Tile : IPrintable
     {
-        protected enum Objects { Wall = '#', Floor = '-', Player = '@', Door = 'D', Monster = 'M', Key = 'k', SuperKey = 'K', Void = 'X', Exit = 'O', Mud = '~', Lever = '/' };
+        protected enum Objects { Wall = '#', Floor = '-', Player = '@', Door = 'D', Monster = 'M', Key = 'k', SuperKey = 'K', Void = 'X', Exit = 'O', Mud = '~', Lever = '/', Boots = 'b' };
         protected char Symbol;
         protected bool Solid;
         protected bool Danger;
         protected bool Visible;
         protected bool Pulled;
+        protected String Name;
         public static int Score;
 
         public Tile()
         {
             Symbol = (char)Objects.Floor;
             Visible = false;
+            Name = "None";
         }
 
         public char GetSymbol()
@@ -60,6 +62,11 @@ namespace Lab4
         public bool IsPulled()
         {
             return Pulled;
+        }
+
+        public String GetName()
+        {
+            return Name;
         }
 
         public virtual void PrintSymbol(bool isHurt)
