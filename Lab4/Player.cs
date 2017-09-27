@@ -285,24 +285,43 @@ namespace Lab4
             }
             return map;
         }
-        public Tile[,] ExpandVision(Tile[,] map, Player player) //Gives new vision as player moves
+        public Tile[,] ExpandVision(Tile[,] map, Player player)
         {
             for (int i = player.XPosition - 2; i < player.XPosition + 3; i++)
             {
                 for (int j = player.YPosition - 2; j < player.YPosition + 3; j++)
                 {
-                    if (i >= 0 && i < map.GetUpperBound(0) && j > 0)
+                    if (i >= 0 && i < map.GetUpperBound(0) && j > 0 && j < map.GetUpperBound(0)) //fix upperbound on j
                     {
                         if (!map[i, j].IsVisible())
                         {
-                            map[i, j].MakeVisible();
+                            if (i == (player.XPosition - 2) && map[player.XPosition - 1, j] is Wall)    //no visibility north
+                            {
+
+                            }
+                            else if (i == (player.XPosition + 2) && map[player.XPosition + 1, j] is Wall)   //no visibility south
+                            {
+
+                            }
+                            else if (j == (player.YPosition - 2) && map[i, player.YPosition - 1] is Wall)
+                            {
+
+                            }
+                            else if (j == (player.YPosition + 2) && map[i, player.YPosition + 1] is Wall)
+                            {
+
+                            }
+                            else
+                            {
+                                map[i, j].MakeVisible();
+                            }
                         }
                     }
                 }
             }
             return map;
         }
-        public Tile CheckTile(Tile tile)
+    public Tile CheckTile(Tile tile)
         {
             if (tile is Key) //Checks if tile is key
             {
