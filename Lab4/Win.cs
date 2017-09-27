@@ -13,6 +13,7 @@ namespace Lab4
             Console.Clear();
             Console.WriteLine($"You reached the end in {Player.Score} turns.");
             Console.ReadLine();
+            HighScoreBoard.PlayerHighScore();
         }
     }
 }

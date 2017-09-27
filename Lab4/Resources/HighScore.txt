@@ -1,0 +1,4 @@
+Otto,1
+Stalin,432
+Lenin,77
+Bakunin,324
