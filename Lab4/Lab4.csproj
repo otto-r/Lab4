@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HighScore.cs" />
+    <Compile Include="HighScoreBoard.cs" />
     <Compile Include="Lever.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="Exit.cs" />
@@ -79,6 +81,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TestMap.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HighScore.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
