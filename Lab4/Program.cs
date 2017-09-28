@@ -12,14 +12,16 @@ namespace Lab4
         static void Main(string[] args)
         {
             Player player = new Player();
-            Monster monster1 = new Monster(3, 1);
-            Monster monster2 = new Monster(3, 2);
+            Monster monster1 = new Monster(4, 35);
+            Monster monster2 = new Monster(15, 18);
+            Monster monster3 = new Monster(15, 30);
 
             Tile[,] map = Map.GenerateMap(); //Create the map
 
             map[player.GetXPosition(), player.GetYPosition()] = player; //Place player
             map[monster1.GetXPosition(), monster1.GetYPosition()] = monster1; //Place monster1
             map[monster2.GetXPosition(), monster2.GetYPosition()] = monster2; //Place monster2
+            map[monster3.GetXPosition(), monster3.GetYPosition()] = monster3; //Place monster3
 
             Random r = new Random();
 
@@ -31,6 +33,10 @@ namespace Lab4
 
             while (true) //Main game loop
             {
+                if (player.GetPulledLever()) //Turn off all fire if lever is pulled
+                {
+                    map = Fire.SetExtinguish(map);
+                }
                 for (int i = 0; i < Map.GetRows(); i++) //Print the map
                 {
                     for (int j = 0; j < Map.GetColumns(); j++)
@@ -209,6 +215,7 @@ namespace Lab4
                 map = player.MovePlayer(input, map, player); //Move player
                 map = monster1.MoveMonster(map, monster1, r.Next(0, 4)); //Move monster1
                 map = monster2.MoveMonster(map, monster2, r.Next(0, 4)); //Move monster2
+                map = monster3.MoveMonster(map, monster3, r.Next(0, 4)); //Move monster3
 
                 Player.Score++; //Add a move
 
