@@ -9,9 +9,9 @@ namespace Lab4
 {
     public static class Map
     {
-        static string MapCurrent = Properties.Resources.TestMap;
+        static string MapCurrent;
 
-        public static Tile[,] GenerateMap()
+        public static Tile[,] GenerateMap() //This class generates the map from text file and translates it into the tiles subclasses
         {
             Console.WriteLine("     Map:");
             Console.WriteLine("(1) Map:");
@@ -44,7 +44,7 @@ namespace Lab4
             Tile[,] map = new Tile[rows, columns];
 
             int counter = 0;
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < rows; i++)  //translates the symbols to object, puts in array
             {
                 for (int j = 0; j < columns; j++)
                 {
@@ -84,6 +84,10 @@ namespace Lab4
                     {
                         map[i, j] = new Mud();
                     }
+                    else if (MapString2[counter] == '^')
+                    {
+                        map[i, j] = new Fire();
+                    }
                     else if (MapString2[counter] == '/')
                     {
                         map[i, j] = new Lever();
@@ -91,6 +95,10 @@ namespace Lab4
                     else if (MapString2[counter] == 'b')
                     {
                         map[i, j] = new Boots();
+                    }
+                    else if (MapString2[counter] == 'j')
+                    {
+                        map[i, j] = new Jacket();
                     }
                     counter++;
                 }

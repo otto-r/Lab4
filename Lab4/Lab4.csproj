@@ -42,12 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tile and subclasses\Jacket.cs" />
     <Compile Include="Tile and subclasses\Boots.cs" />
     <Compile Include="HighScore.cs" />
     <Compile Include="HighScoreBoard.cs" />
     <Compile Include="Tile and subclasses\Lever.cs" />
     <Compile Include="Tile and subclasses\Door.cs" />
     <Compile Include="Tile and subclasses\Exit.cs" />
+    <Compile Include="Tile and subclasses\Fire.cs" />
     <Compile Include="Tile and subclasses\Mud.cs" />
     <Compile Include="Tile and subclasses\SuperKey.cs" />
     <Compile Include="Tile and subclasses\Key.cs" />

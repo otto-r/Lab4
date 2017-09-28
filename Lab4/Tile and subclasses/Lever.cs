@@ -20,7 +20,7 @@ namespace Lab4
             {
                 if (Pulled)
                 {
-                    Symbol = '|';
+                    Symbol = '/';
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.Write(Symbol);
                     Console.ForegroundColor = ConsoleColor.White;

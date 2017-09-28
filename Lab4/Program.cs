@@ -94,27 +94,27 @@ namespace Lab4
                 if (player.GetHurt()) //The player was hurt
                 {
                     Player.Score += 4;
-                    Console.WriteLine("The monster hurt you! You lost 5 moves.");
+                    Console.WriteLine("The monster hurt you! You lost 5 moves.                                                              ");
                 }
 
                 else if (player.GetNeedKey()) //The player needs a key
                 {
-                    Console.WriteLine("You need a key to open this door!");
+                    Console.WriteLine("You need a key to open this door!                                                                        ");
                 }
 
                 else if (player.GetUsedKey()) //The player used a key
                 {
-                    Console.WriteLine("You used a key to open the door!");
+                    Console.WriteLine("You used a key to open the door!                                                                 ");
                 }
 
                 else if (player.GetGotKey()) //The player got a key
                 {
-                    Console.WriteLine("You picked up a key!");
+                    Console.WriteLine("You picked up a key!                                                                             ");
                 }
 
                 else if (player.GetGotSuperKey()) //The player got a key
                 {
-                    Console.WriteLine("You picked up a Superkey!");
+                    Console.WriteLine("You picked up a Superkey!                                                                    ");
                 }
 
                 else if (player.GetSteppedInMud()) //The player stepped in mud
@@ -122,11 +122,24 @@ namespace Lab4
                     if (!(player.GetGear() is Boots))
                     {
                         Player.Score += 2;
-                        Console.WriteLine("You stepped in mud! You lost 3 moves.");
+                        Console.WriteLine("You stepped in mud! You lost 3 moves.                                                    ");
                     }
                     else
                     {
-                        Console.WriteLine("Your boots makes it easy to walk in mud!");
+                        Console.WriteLine("Your boots makes it easy to walk in mud!                                                    ");
+                    }
+                }
+
+                else if (player.GetSteppedInFire()) //The player stepped in fire
+                {
+                    if (!(player.GetGear() is Jacket))
+                    {
+                        Player.Score += 24;
+                        Console.WriteLine("You stepped in fire! You lost 25 moves.                                                      ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Your fireproof jacket keeps you cool while walking through fire!                           ");
                     }
                 }
 
@@ -137,15 +150,20 @@ namespace Lab4
 
                 else if (player.GetGotBoots())
                 {
-                    Console.WriteLine("You picked up boots!");
+                    Console.WriteLine("You picked up boots!                                                                       ");
+                }
+
+                else if (player.GetGotJacket())
+                {
+                    Console.WriteLine("You picked up a jacket!                                                                      ");
                 }
 
                 else
                 {
-                    Console.WriteLine("                                        ");
+                    Console.WriteLine("                                                                                                    ");
                 }
 
-                Console.WriteLine($"Keys: {player.GetKeys()} Super Keys: {Math.Ceiling(player.GetSuperKeys()/3)} Moves: {Player.Score} Gear: {player.GetGear().GetName()}"); //Player stats
+                Console.WriteLine($"Keys: {player.GetKeys()} Super Keys: {Math.Ceiling(player.GetSuperKeys() / 3)} Moves: {Player.Score} Gear: {player.GetGear().GetName()}"); //Player stats
                 //Console.WriteLine($"Gear: {player.GetGearName()}");
 
                 player.ClearConditions(); //Clear special conditions
