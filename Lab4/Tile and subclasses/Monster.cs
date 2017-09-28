@@ -10,7 +10,7 @@ namespace Lab4
     {
         private int XPosition;
         private int YPosition;
-        Tile temp = new Floor(true);
+        Tile temp = new Floor(false);
         Random r = new Random();
 
         public Monster(int x, int y)

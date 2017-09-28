@@ -358,7 +358,7 @@ namespace Lab4
             {
                 SteppedInMud = true;
             }
-            else if (tile is Fire) //Checks if tile is fire
+            else if (tile is Fire && !tile.GetExtinguished()) //Checks if tile is fire
             {
                 SteppedInFire = true;
             }

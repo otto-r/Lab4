@@ -14,6 +14,7 @@ namespace Lab4
         protected bool Danger;
         protected bool Visible;
         protected bool Pulled;
+        protected bool Extinguished;
         protected String Name;
         public static int Score;
 
@@ -67,6 +68,16 @@ namespace Lab4
         public String GetName()
         {
             return Name;
+        }
+
+        public void Extinguish()
+        {
+            Extinguished = true;
+        }
+
+        public bool GetExtinguished()
+        {
+            return Extinguished;
         }
 
         public virtual void PrintSymbol(bool isHurt)

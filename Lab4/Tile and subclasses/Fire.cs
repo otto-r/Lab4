@@ -13,17 +13,18 @@ namespace Lab4
         {
             Symbol = (char)Objects.Fire;
             Solid = false;
+            Extinguished = false;
         }
 
         public override void PrintSymbol(bool isHurt)
         {
-            if (Visible)
+            if (Visible && !Extinguished)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(Symbol);
                 Console.ForegroundColor = ConsoleColor.White;
             }
-            else if (isExtinguished)
+            else if (Visible && Extinguished)
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write(Symbol);
@@ -35,6 +36,18 @@ namespace Lab4
                 Console.Write(Symbol);
                 Console.ForegroundColor = ConsoleColor.White;
             }
+        }
+
+        public static Tile[,] SetExtinguish(Tile[,] map)
+        {
+            foreach (Tile tile in map)
+            {
+                if (tile is Fire)
+                {
+                    tile.Extinguish();
+                }
+            }
+            return map;
         }
     }
 }
