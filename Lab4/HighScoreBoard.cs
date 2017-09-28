@@ -11,8 +11,17 @@ namespace Lab4
     {
         public static void PlayerHighScore()
         {
-            string HighScore;
-            using (var streamReader = new StreamReader(@"HighScore.txt", Encoding.UTF8))    //sets up text file as source to read and write 
+            Console.CursorVisible = true;
+            string HighScore;   //Checks for HighScore.csv if no creates HighScore.csv
+            if (File.Exists("HighScore.csv"))
+            {
+
+            }
+            else
+            {
+                using (FileStream fs = File.Create("HighScore.csv")) ;
+            }
+            using (var streamReader = new StreamReader(@"HighScore.csv", Encoding.UTF8))    //sets up text file as source to read and write 
             {
                 HighScore = streamReader.ReadToEnd();
             }
@@ -31,7 +40,7 @@ namespace Lab4
                     {
                         string nameAndScore = name.Substring(0, 24) + "," + Player.Score + "\n";
                         HighScore += nameAndScore;
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter("HighScore.txt", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter("HighScore.csv", true))
                         {
                             file.WriteLine(name.Substring(0, 24) + "," + Player.Score);
                         }
@@ -41,7 +50,7 @@ namespace Lab4
                     {
                         string nameAndScore = name + "," + Player.Score + "\n";
                         HighScore += nameAndScore;
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter("HighScore.txt", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter("HighScore.csv", true))
                         {
                             file.WriteLine(name + "," + Player.Score);
                         }

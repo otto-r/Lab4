@@ -145,7 +145,7 @@ namespace Lab4
                     Console.WriteLine("                                        ");
                 }
 
-                Console.WriteLine($"Keys: {player.GetKeys()} Super Keys: {player.GetSuperKeys()} Moves: {Player.Score} Gear: {player.GetGear().GetName()}"); //Player stats
+                Console.WriteLine($"Keys: {player.GetKeys()} Super Keys: {Math.Ceiling(player.GetSuperKeys()/3)} Moves: {Player.Score} Gear: {player.GetGear().GetName()}"); //Player stats
                 //Console.WriteLine($"Gear: {player.GetGearName()}");
 
                 player.ClearConditions(); //Clear special conditions

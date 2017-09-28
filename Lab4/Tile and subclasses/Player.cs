@@ -20,7 +20,7 @@ namespace Lab4
         private bool SteppedInMud;
         private bool PulledLever;
         private int Keys;
-        private int SuperKeys;
+        private double SuperKeys;
         private Tile Gear;
         private Tile temp;
 
@@ -86,7 +86,7 @@ namespace Lab4
             return Keys;
         }
 
-        public int GetSuperKeys()
+        public double GetSuperKeys()
         {
             return SuperKeys;
         }
@@ -291,7 +291,7 @@ namespace Lab4
             {
                 for (int j = player.YPosition - 2; j < player.YPosition + 3; j++)
                 {
-                    if (i >= 0 && i < map.GetUpperBound(0) && j > 0 && j < map.GetUpperBound(0)) //fix upperbound on j
+                    if (i >= 0 && i < map.GetLength(0) && j > 0 && j < Map.GetColumns()) //fix upperbound on j
                     {
                         if (!map[i, j].IsVisible())
                         {
