@@ -42,21 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boots.cs" />
+    <Compile Include="Tile and subclasses\Boots.cs" />
     <Compile Include="HighScore.cs" />
     <Compile Include="HighScoreBoard.cs" />
-    <Compile Include="Lever.cs" />
-    <Compile Include="Door.cs" />
-    <Compile Include="Exit.cs" />
-    <Compile Include="Mud.cs" />
-    <Compile Include="SuperKey.cs" />
-    <Compile Include="Key.cs" />
-    <Compile Include="Floor.cs" />
+    <Compile Include="Tile and subclasses\Lever.cs" />
+    <Compile Include="Tile and subclasses\Door.cs" />
+    <Compile Include="Tile and subclasses\Exit.cs" />
+    <Compile Include="Tile and subclasses\Mud.cs" />
+    <Compile Include="Tile and subclasses\SuperKey.cs" />
+    <Compile Include="Tile and subclasses\Key.cs" />
+    <Compile Include="Tile and subclasses\Floor.cs" />
     <Compile Include="IPrintable.cs" />
     <Compile Include="Map.cs" />
-    <Compile Include="Monster.cs" />
-    <Compile Include="Tile.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Tile and subclasses\Monster.cs" />
+    <Compile Include="Tile and subclasses\Tile.cs" />
+    <Compile Include="Tile and subclasses\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -64,8 +64,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Void.cs" />
-    <Compile Include="Wall.cs" />
+    <Compile Include="Tile and subclasses\Void.cs" />
+    <Compile Include="Tile and subclasses\Wall.cs" />
     <Compile Include="Win.cs" />
   </ItemGroup>
   <ItemGroup>

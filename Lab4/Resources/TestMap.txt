@@ -2,8 +2,8 @@
 #-----------k-K--D---#xxxxxxxxxxxxxx
 #----------------#----#xxxxxxxxxxxxx
 #-------xxx-D----xx#----#xxxxxxxxxxx
-#-------xxx-D----xxx###--####xxxxxxx
-#-------xxxKD----xxxxxx#-----#xxxxxx
+#-------xxx-D--K-xxx###--####xxxxxxx
+#-------xxxKD--K-xxxxxx#-----#xxxxxx
 #-------xxxkD----xxxxxxx#####xxxxxxx
 #------O-------DDxxxxxxxxxxxxxxxxxxx
 #--------------DDxxxxxxxxxxxxxxxxxxx
