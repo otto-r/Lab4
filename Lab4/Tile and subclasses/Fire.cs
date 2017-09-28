@@ -8,6 +8,7 @@ namespace Lab4
 {
     class Fire : Tile, IPrintable
     {
+
         public Fire()
         {
             Symbol = (char)Objects.Fire;
@@ -19,6 +20,12 @@ namespace Lab4
             if (Visible)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(Symbol);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (isExtinguished)
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write(Symbol);
                 Console.ForegroundColor = ConsoleColor.White;
             }

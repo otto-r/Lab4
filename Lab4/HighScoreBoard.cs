@@ -96,7 +96,7 @@ namespace Lab4
             {
                 if (higscore.Name.Length > 8)
                 {
-                    Console.WriteLine($"{higscore.Name.Substring(0, 6)}...: {higscore.Score}");  //No long names printed
+                    Console.WriteLine($"{higscore.Name.Substring(0, 8)}...: {higscore.Score}");  //No long names printed
                 }
                 else
                 {
