@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    class Boots : Tile , IPrintable
+    class Jacket : Tile , IPrintable
     {
-        public Boots()
+        public Jacket()
         {
-            Symbol = (char)Objects.Boots;
+            Symbol = (char)Objects.Jacket;
             Solid = false;
-            Name = "Boots       ";
+            Name = "Jacket";
         }
         public override void PrintSymbol(bool isHurt)
         {
             if (Visible)
             {
-                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.Write(Symbol);
                 Console.ForegroundColor = ConsoleColor.White;
             }

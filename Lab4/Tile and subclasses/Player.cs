@@ -16,8 +16,10 @@ namespace Lab4
         private bool GotKey;
         private bool GotSuperKey;
         private bool GotBoots;
+        private bool GotJacket;
         private bool PlayerWin;
         private bool SteppedInMud;
+        private bool SteppedInFire;
         private bool PulledLever;
         private int Keys;
         private double SuperKeys;
@@ -77,8 +79,10 @@ namespace Lab4
             GotKey = false;
             GotSuperKey = false;
             SteppedInMud = false;
+            SteppedInFire = false;
             PulledLever = false;
             GotBoots = false;
+            GotJacket = false;
         }
 
         public int GetKeys()
@@ -126,6 +130,11 @@ namespace Lab4
             return SteppedInMud;
         }
 
+        public bool GetSteppedInFire()
+        {
+            return SteppedInFire;
+        }
+
         public bool GetPulledLever()
         {
             return PulledLever;
@@ -134,6 +143,11 @@ namespace Lab4
         public bool GetGotBoots()
         {
             return GotBoots;
+        }
+
+        public bool GetGotJacket()
+        {
+            return GotJacket;
         }
 
         public Tile GetGear()
@@ -291,23 +305,24 @@ namespace Lab4
             {
                 for (int j = player.YPosition - 2; j < player.YPosition + 3; j++)
                 {
-                    if (i >= 0 && i < map.GetLength(0) && j > 0 && j < Map.GetColumns()) //fix upperbound on j
+                    if (i >= 0 && i < map.GetLength(0) && j > 0 && j < Map.GetColumns()) 
                     {
                         if (!map[i, j].IsVisible())
                         {
-                            if (i == (player.XPosition - 2) && map[player.XPosition - 1, j] is Wall)    //no visibility north
+                            //Check if wall or door is obstructing view in all directions
+                            if (i == (player.XPosition - 2) && map[player.XPosition - 1, j] is Wall || i == (player.XPosition - 2) && map[player.XPosition - 1, j] is Door)    //north
                             {
 
                             }
-                            else if (i == (player.XPosition + 2) && map[player.XPosition + 1, j] is Wall)   //no visibility south
+                            else if (i == (player.XPosition + 2) && map[player.XPosition + 1, j] is Wall || i == (player.XPosition + 2) && map[player.XPosition + 1, j] is Door)   //south
                             {
 
                             }
-                            else if (j == (player.YPosition - 2) && map[i, player.YPosition - 1] is Wall)
+                            else if (j == (player.YPosition - 2) && map[i, player.YPosition - 1] is Wall || j == (player.YPosition - 2) && map[i, player.YPosition - 1] is Door)   //west
                             {
 
                             }
-                            else if (j == (player.YPosition + 2) && map[i, player.YPosition + 1] is Wall)
+                            else if (j == (player.YPosition + 2) && map[i, player.YPosition + 1] is Wall || j == (player.YPosition + 2) && map[i, player.YPosition + 1] is Door)   //east
                             {
 
                             }
@@ -343,6 +358,10 @@ namespace Lab4
             {
                 SteppedInMud = true;
             }
+            else if (tile is Fire) //Checks if tile is fire
+            {
+                SteppedInFire = true;
+            }
             else if (tile is Lever && !temp.IsPulled()) //Checks if tile is lever
             {
                 tile.PullLever();
@@ -351,8 +370,16 @@ namespace Lab4
             else if (tile is Boots) //Checks if tile is boots
             {
                 GotBoots = true;
+                Tile TempTile = Gear;
                 Gear = tile;
-                tile = new Floor(true);
+                tile = TempTile;
+            }
+            else if (tile is Jacket) //Checks if tile is Jacket
+            {
+                GotJacket = true;
+                Tile TempTile = Gear;
+                Gear = tile;
+                tile = TempTile;
             }
             return tile;
         }
