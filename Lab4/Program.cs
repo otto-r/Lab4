@@ -72,18 +72,47 @@ namespace Lab4
                     }
                     else if (i == Map.GetRows() / 2 + 5)
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.Write("     |");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Lever");
+                    }
+                    else if (i == Map.GetRows() / 2 + 6)
+                    {
                         Console.ForegroundColor = ConsoleColor.DarkGray;
                         Console.Write("     ~");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Mud");
                     }
-                    else if (i == Map.GetRows() / 2 + 6)
+                    else if (i == Map.GetRows() / 2 + 7)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("     ^");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Fire");
+                    }
+                    else if (i == Map.GetRows() / 2 + 8)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("     M");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Monster");
                     }
+                    else if (i == Map.GetRows() / 2 + 9)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write("     b");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Boots");
+                    }
+                    else if (i == Map.GetRows() / 2 + 10)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.Write("     j");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Jacket");
+                    }
+
                     else
                     {
                         Console.WriteLine();

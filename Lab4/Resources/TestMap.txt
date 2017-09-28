@@ -1,10 +1,10 @@
 #####################xxxxxxxxxxxxxxx
 #-----------k-K--D---#xxxxxxxxxxxxxx
 #----------------#----#xxxxxxxxxxxxx
-#-------xxx-D----xx#----#xxxxxxxxxxx
+#--/----xxx-D----xx#----#xxxxxxxxxxx
 #-------xxx-D--K-xxx###--####xxxxxxx
 #-------xxxKD--K-xxxxxx#-----#xxxxxx
-#-------xxxkD----xxxxxxx#####xxxxxxx
+#bj-----xxxkD----xxxxxxx#####xxxxxxx
 #------O-------DDxxxxxxxxxxxxxxxxxxx
 #--------------DDxxxxxxxxxxxxxxxxxxx
 x#x#x#x#x#x#x#x#xxxxxxxxxxxxxxxxxxxx
