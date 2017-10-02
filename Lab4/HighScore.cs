@@ -10,11 +10,13 @@ namespace Lab4
     {
         public string Name { get; set; }
         public int Score { get; set; }
+        public int Id { get; set; }
 
-        public HighScore(string name, int score)
+        public HighScore(string name, int score, int id)
         {
             Name = name;
             Score = score;
+            Id = id;
         }
     }
 }
