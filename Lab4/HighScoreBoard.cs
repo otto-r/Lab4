@@ -76,11 +76,6 @@ namespace Lab4
 
             while (true)    //Loads scores from resource .csv
             {
-                //if (HighScore.IndexOf(",") == 0)
-                //{
-                //    Console.WriteLine("first line");
-                //    HighScore = HighScore.Substring(1);
-                //}
                 if (!String.IsNullOrEmpty(HighScore))
                 {
                     //Add scores to list
@@ -123,13 +118,13 @@ namespace Lab4
                 return x.Score.CompareTo(y.Score);
             });
 
-            //Prints high scoreboard to screen
+            //Prints high scoreboard to screen (top 10)
             Console.Clear();
             Console.WriteLine("         High Score Leaderboard:\n");
             int counter = 0;
             foreach (var higscore in ScoreList)
             {
-                if (higscore.Name.Length > 8 && higscore.Id == playerId)
+                if (higscore.Name.Length > 8 && higscore.Id == playerId)    //No long names printed
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray;
                     if (counter == 9)
