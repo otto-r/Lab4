@@ -43,75 +43,82 @@ namespace Lab4
                     {
                         map[i, j].PrintSymbol(player.GetHurt());
                     }
-                    if (i == Map.GetRows() / 2 - 1)
+                    if (i == Map.GetRows() / 3 - 2)
                     {
                         Console.WriteLine("     Legend");
                     }
-                    else if (i == Map.GetRows() / 2)
+                    else if (i == Map.GetRows() / 3 - 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write("     O");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Exit");
+                    }
+                    else if (i == Map.GetRows() / 3)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGray;
                         Console.Write("     -");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Floor");
                     }
-                    else if (i == Map.GetRows() / 2 + 1)
+                    else if (i == Map.GetRows() / 3 + 1)
                     {
                         Console.WriteLine($"     #     Wall");
                     }
-                    else if (i == Map.GetRows() / 2 + 2)
+                    else if (i == Map.GetRows() / 3 + 2)
                     {
                         Console.WriteLine($"     D     Door");
                     }
-                    else if (i == Map.GetRows() / 2 + 3)
+                    else if (i == Map.GetRows() / 3 + 3)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.Write("     k");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Key");
                     }
-                    else if (i == Map.GetRows() / 2 + 4)
+                    else if (i == Map.GetRows() / 3 + 4)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.Write("     K");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Super Key");
                     }
-                    else if (i == Map.GetRows() / 2 + 5)
+                    else if (i == Map.GetRows() / 3 + 5)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.Write("     |");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Lever");
                     }
-                    else if (i == Map.GetRows() / 2 + 6)
+                    else if (i == Map.GetRows() / 3 + 6)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGray;
                         Console.Write("     ~");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Mud");
                     }
-                    else if (i == Map.GetRows() / 2 + 7)
+                    else if (i == Map.GetRows() / 3 + 7)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("     ^");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Fire");
                     }
-                    else if (i == Map.GetRows() / 2 + 8)
+                    else if (i == Map.GetRows() / 3 + 8)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("     M");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Monster");
                     }
-                    else if (i == Map.GetRows() / 2 + 9)
+                    else if (i == Map.GetRows() / 3 + 9)
                     {
                         Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.Write("     b");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Boots");
                     }
-                    else if (i == Map.GetRows() / 2 + 10)
+                    else if (i == Map.GetRows() / 3 + 10)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.Write("     j");
