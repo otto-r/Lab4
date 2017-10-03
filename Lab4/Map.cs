@@ -44,7 +44,7 @@ namespace Lab4
             Tile[,] map = new Tile[rows, columns];
 
             int counter = 0;
-            for (int i = 0; i < rows; i++)  //translates the symbols to object, puts in array
+            for (int i = 0; i < rows; i++)  //translates the symbols to object, inserts into array
             {
                 for (int j = 0; j < columns; j++)
                 {
