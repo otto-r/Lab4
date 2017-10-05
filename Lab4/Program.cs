@@ -11,6 +11,10 @@ namespace Lab4
     {
         static void Main(string[] args)
         {
+            //Highscore:
+            //Krille: 333
+            //André: 384
+            //Maria: 1711
             Player player = new Player();
             Monster monster1 = new Monster(4, 35);
             Monster monster2 = new Monster(15, 18);

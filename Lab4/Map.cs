@@ -13,7 +13,7 @@ namespace Lab4
 
         public static Tile[,] GenerateMap() //This class generates the map from text file and translates it into the tiles subclasses
         {
-            Console.WriteLine("     Map:");
+            /*Console.WriteLine("     Map:");
             Console.WriteLine("(1) Map:");
             Console.WriteLine("(2) TestMap:");
 
@@ -27,16 +27,16 @@ namespace Lab4
                 }
             }
             if (input == '1')
-            {
+            {*/
                 MapCurrent = Properties.Resources.Map;
-            }
+            /*}
             else if (input == '2')
             {
                 MapCurrent = Properties.Resources.TestMap;
             }
 
             Console.Clear();
-
+            */
             String MapString = MapCurrent;
             String MapString2 = MapString.Replace(Environment.NewLine, "");
             int rows = ((MapString.Length - MapString2.Length) / 2 + 1);
